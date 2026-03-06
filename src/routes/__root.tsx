@@ -1,12 +1,5 @@
-import {
-  createRootRoute,
-  Outlet,
-  HeadContent,
-  Scripts,
-} from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import { ConvexClientProvider } from '../convex'
-
+import { createRootRoute, Outlet, ScrollRestoration, HeadContent, Scripts } from '@tanstack/react-router'
+import * as React from 'react'
 import appCss from '../styles.css?url'
 
 export const Route = createRootRoute({
@@ -20,7 +13,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Chat Starter',
+        title: 'Comunidade Sem Limites',
       },
     ],
     links: [
@@ -28,16 +21,24 @@ export const Route = createRootRoute({
         rel: 'stylesheet',
         href: appCss,
       },
-    ],
+      { 
+        rel: 'icon', 
+        type: 'image/svg+xml', 
+        href: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23208080%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m8 3 4 8 5-5 5 15H2L8 3z%22/></svg>' 
+      }
+    ]
   }),
+  component: RootComponent,
+})
 
-  component: () => (
+function RootComponent() {
+  return (
     <RootDocument>
       <Outlet />
-      <TanStackRouterDevtools />
+      <ScrollRestoration />
     </RootDocument>
-  ),
-})
+  )
+}
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
@@ -46,9 +47,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <ConvexClientProvider>
-          {children}
-        </ConvexClientProvider>
+        {children}
         <Scripts />
       </body>
     </html>
