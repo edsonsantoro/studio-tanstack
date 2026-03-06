@@ -23,7 +23,9 @@ import { Route as LoginTwitterCallbackRouteImport } from './routes/login.twitter
 import { Route as LoginGoogleCallbackRouteImport } from './routes/login.google.callback'
 import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebook.callback'
 import { Route as LocaleAdminUsersRouteImport } from './routes/$locale.admin.users'
+import { Route as LocaleAdminRecommendationsRouteImport } from './routes/$locale.admin.recommendations'
 import { Route as LocaleAdminModerationRouteImport } from './routes/$locale.admin.moderation'
+import { Route as LocaleAdminFeedbackRouteImport } from './routes/$locale.admin.feedback'
 import { Route as LocaleAdminCoursesRouteImport } from './routes/$locale.admin.courses'
 
 const LocaleRoute = LocaleRouteImport.update({
@@ -96,9 +98,20 @@ const LocaleAdminUsersRoute = LocaleAdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => LocaleAdminRoute,
 } as any)
+const LocaleAdminRecommendationsRoute =
+  LocaleAdminRecommendationsRouteImport.update({
+    id: '/recommendations',
+    path: '/recommendations',
+    getParentRoute: () => LocaleAdminRoute,
+  } as any)
 const LocaleAdminModerationRoute = LocaleAdminModerationRouteImport.update({
   id: '/moderation',
   path: '/moderation',
+  getParentRoute: () => LocaleAdminRoute,
+} as any)
+const LocaleAdminFeedbackRoute = LocaleAdminFeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
   getParentRoute: () => LocaleAdminRoute,
 } as any)
 const LocaleAdminCoursesRoute = LocaleAdminCoursesRouteImport.update({
@@ -119,7 +132,9 @@ export interface FileRoutesByFullPath {
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/feedback': typeof LocaleAdminFeedbackRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
+  '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
@@ -136,7 +151,9 @@ export interface FileRoutesByTo {
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale': typeof LocaleIndexRoute
   '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/feedback': typeof LocaleAdminFeedbackRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
+  '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
@@ -155,7 +172,9 @@ export interface FileRoutesById {
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/feedback': typeof LocaleAdminFeedbackRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
+  '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
@@ -175,7 +194,9 @@ export interface FileRouteTypes {
     | '/login/twitter'
     | '/$locale/'
     | '/$locale/admin/courses'
+    | '/$locale/admin/feedback'
     | '/$locale/admin/moderation'
+    | '/$locale/admin/recommendations'
     | '/$locale/admin/users'
     | '/login/facebook/callback'
     | '/login/google/callback'
@@ -192,7 +213,9 @@ export interface FileRouteTypes {
     | '/login/twitter'
     | '/$locale'
     | '/$locale/admin/courses'
+    | '/$locale/admin/feedback'
     | '/$locale/admin/moderation'
+    | '/$locale/admin/recommendations'
     | '/$locale/admin/users'
     | '/login/facebook/callback'
     | '/login/google/callback'
@@ -210,7 +233,9 @@ export interface FileRouteTypes {
     | '/login/twitter'
     | '/$locale/'
     | '/$locale/admin/courses'
+    | '/$locale/admin/feedback'
     | '/$locale/admin/moderation'
+    | '/$locale/admin/recommendations'
     | '/$locale/admin/users'
     | '/login/facebook/callback'
     | '/login/google/callback'
@@ -325,11 +350,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleAdminUsersRouteImport
       parentRoute: typeof LocaleAdminRoute
     }
+    '/$locale/admin/recommendations': {
+      id: '/$locale/admin/recommendations'
+      path: '/recommendations'
+      fullPath: '/$locale/admin/recommendations'
+      preLoaderRoute: typeof LocaleAdminRecommendationsRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
     '/$locale/admin/moderation': {
       id: '/$locale/admin/moderation'
       path: '/moderation'
       fullPath: '/$locale/admin/moderation'
       preLoaderRoute: typeof LocaleAdminModerationRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
+    '/$locale/admin/feedback': {
+      id: '/$locale/admin/feedback'
+      path: '/feedback'
+      fullPath: '/$locale/admin/feedback'
+      preLoaderRoute: typeof LocaleAdminFeedbackRouteImport
       parentRoute: typeof LocaleAdminRoute
     }
     '/$locale/admin/courses': {
@@ -344,13 +383,17 @@ declare module '@tanstack/react-router' {
 
 interface LocaleAdminRouteChildren {
   LocaleAdminCoursesRoute: typeof LocaleAdminCoursesRoute
+  LocaleAdminFeedbackRoute: typeof LocaleAdminFeedbackRoute
   LocaleAdminModerationRoute: typeof LocaleAdminModerationRoute
+  LocaleAdminRecommendationsRoute: typeof LocaleAdminRecommendationsRoute
   LocaleAdminUsersRoute: typeof LocaleAdminUsersRoute
 }
 
 const LocaleAdminRouteChildren: LocaleAdminRouteChildren = {
   LocaleAdminCoursesRoute: LocaleAdminCoursesRoute,
+  LocaleAdminFeedbackRoute: LocaleAdminFeedbackRoute,
   LocaleAdminModerationRoute: LocaleAdminModerationRoute,
+  LocaleAdminRecommendationsRoute: LocaleAdminRecommendationsRoute,
   LocaleAdminUsersRoute: LocaleAdminUsersRoute,
 }
 
