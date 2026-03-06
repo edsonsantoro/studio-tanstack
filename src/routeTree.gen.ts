@@ -15,18 +15,26 @@ import { Route as LocaleIndexRouteImport } from './routes/$locale.index'
 import { Route as LoginTwitterRouteImport } from './routes/login.twitter'
 import { Route as LoginGoogleRouteImport } from './routes/login.google'
 import { Route as LoginFacebookRouteImport } from './routes/login.facebook'
+import { Route as LocaleTestimoniesRouteImport } from './routes/$locale.testimonies'
 import { Route as LocaleRoadmapRouteImport } from './routes/$locale.roadmap'
 import { Route as LocaleProfileRouteImport } from './routes/$locale.profile'
+import { Route as LocaleEventsRouteImport } from './routes/$locale.events'
 import { Route as LocaleDashboardRouteImport } from './routes/$locale.dashboard'
 import { Route as LocaleAdminRouteImport } from './routes/$locale.admin'
 import { Route as LoginTwitterCallbackRouteImport } from './routes/login.twitter.callback'
 import { Route as LoginGoogleCallbackRouteImport } from './routes/login.google.callback'
 import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebook.callback'
+import { Route as LocaleTestimoniesCreateRouteImport } from './routes/$locale.testimonies.create'
+import { Route as LocaleEventsCreateRouteImport } from './routes/$locale.events.create'
 import { Route as LocaleAdminUsersRouteImport } from './routes/$locale.admin.users'
 import { Route as LocaleAdminRecommendationsRouteImport } from './routes/$locale.admin.recommendations'
 import { Route as LocaleAdminModerationRouteImport } from './routes/$locale.admin.moderation'
 import { Route as LocaleAdminFeedbackRouteImport } from './routes/$locale.admin.feedback'
 import { Route as LocaleAdminCoursesRouteImport } from './routes/$locale.admin.courses'
+import { Route as LocaleTestimoniesIdIndexRouteImport } from './routes/$locale.testimonies.$id.index'
+import { Route as LocaleEventsIdIndexRouteImport } from './routes/$locale.events.$id.index'
+import { Route as LocaleTestimoniesIdEditRouteImport } from './routes/$locale.testimonies.$id.edit'
+import { Route as LocaleEventsIdEditRouteImport } from './routes/$locale.events.$id.edit'
 
 const LocaleRoute = LocaleRouteImport.update({
   id: '/$locale',
@@ -58,6 +66,11 @@ const LoginFacebookRoute = LoginFacebookRouteImport.update({
   path: '/login/facebook',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocaleTestimoniesRoute = LocaleTestimoniesRouteImport.update({
+  id: '/testimonies',
+  path: '/testimonies',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LocaleRoadmapRoute = LocaleRoadmapRouteImport.update({
   id: '/roadmap',
   path: '/roadmap',
@@ -66,6 +79,11 @@ const LocaleRoadmapRoute = LocaleRoadmapRouteImport.update({
 const LocaleProfileRoute = LocaleProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LocaleEventsRoute = LocaleEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
   getParentRoute: () => LocaleRoute,
 } as any)
 const LocaleDashboardRoute = LocaleDashboardRouteImport.update({
@@ -93,6 +111,16 @@ const LoginFacebookCallbackRoute = LoginFacebookCallbackRouteImport.update({
   path: '/callback',
   getParentRoute: () => LoginFacebookRoute,
 } as any)
+const LocaleTestimoniesCreateRoute = LocaleTestimoniesCreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => LocaleTestimoniesRoute,
+} as any)
+const LocaleEventsCreateRoute = LocaleEventsCreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => LocaleEventsRoute,
+} as any)
 const LocaleAdminUsersRoute = LocaleAdminUsersRouteImport.update({
   id: '/users',
   path: '/users',
@@ -119,14 +147,37 @@ const LocaleAdminCoursesRoute = LocaleAdminCoursesRouteImport.update({
   path: '/courses',
   getParentRoute: () => LocaleAdminRoute,
 } as any)
+const LocaleTestimoniesIdIndexRoute =
+  LocaleTestimoniesIdIndexRouteImport.update({
+    id: '/$id/',
+    path: '/$id/',
+    getParentRoute: () => LocaleTestimoniesRoute,
+  } as any)
+const LocaleEventsIdIndexRoute = LocaleEventsIdIndexRouteImport.update({
+  id: '/$id/',
+  path: '/$id/',
+  getParentRoute: () => LocaleEventsRoute,
+} as any)
+const LocaleTestimoniesIdEditRoute = LocaleTestimoniesIdEditRouteImport.update({
+  id: '/$id/edit',
+  path: '/$id/edit',
+  getParentRoute: () => LocaleTestimoniesRoute,
+} as any)
+const LocaleEventsIdEditRoute = LocaleEventsIdEditRouteImport.update({
+  id: '/$id/edit',
+  path: '/$id/edit',
+  getParentRoute: () => LocaleEventsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/admin': typeof LocaleAdminRouteWithChildren
   '/$locale/dashboard': typeof LocaleDashboardRoute
+  '/$locale/events': typeof LocaleEventsRouteWithChildren
   '/$locale/profile': typeof LocaleProfileRoute
   '/$locale/roadmap': typeof LocaleRoadmapRoute
+  '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
   '/login/facebook': typeof LoginFacebookRouteWithChildren
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
@@ -136,16 +187,24 @@ export interface FileRoutesByFullPath {
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
+  '/$locale/events/create': typeof LocaleEventsCreateRoute
+  '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
   '/login/twitter/callback': typeof LoginTwitterCallbackRoute
+  '/$locale/events/$id/edit': typeof LocaleEventsIdEditRoute
+  '/$locale/testimonies/$id/edit': typeof LocaleTestimoniesIdEditRoute
+  '/$locale/events/$id/': typeof LocaleEventsIdIndexRoute
+  '/$locale/testimonies/$id/': typeof LocaleTestimoniesIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$locale/admin': typeof LocaleAdminRouteWithChildren
   '/$locale/dashboard': typeof LocaleDashboardRoute
+  '/$locale/events': typeof LocaleEventsRouteWithChildren
   '/$locale/profile': typeof LocaleProfileRoute
   '/$locale/roadmap': typeof LocaleRoadmapRoute
+  '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
   '/login/facebook': typeof LoginFacebookRouteWithChildren
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
@@ -155,9 +214,15 @@ export interface FileRoutesByTo {
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
+  '/$locale/events/create': typeof LocaleEventsCreateRoute
+  '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
   '/login/twitter/callback': typeof LoginTwitterCallbackRoute
+  '/$locale/events/$id/edit': typeof LocaleEventsIdEditRoute
+  '/$locale/testimonies/$id/edit': typeof LocaleTestimoniesIdEditRoute
+  '/$locale/events/$id': typeof LocaleEventsIdIndexRoute
+  '/$locale/testimonies/$id': typeof LocaleTestimoniesIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -165,8 +230,10 @@ export interface FileRoutesById {
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/admin': typeof LocaleAdminRouteWithChildren
   '/$locale/dashboard': typeof LocaleDashboardRoute
+  '/$locale/events': typeof LocaleEventsRouteWithChildren
   '/$locale/profile': typeof LocaleProfileRoute
   '/$locale/roadmap': typeof LocaleRoadmapRoute
+  '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
   '/login/facebook': typeof LoginFacebookRouteWithChildren
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
@@ -176,9 +243,15 @@ export interface FileRoutesById {
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
+  '/$locale/events/create': typeof LocaleEventsCreateRoute
+  '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
   '/login/twitter/callback': typeof LoginTwitterCallbackRoute
+  '/$locale/events/$id/edit': typeof LocaleEventsIdEditRoute
+  '/$locale/testimonies/$id/edit': typeof LocaleTestimoniesIdEditRoute
+  '/$locale/events/$id/': typeof LocaleEventsIdIndexRoute
+  '/$locale/testimonies/$id/': typeof LocaleTestimoniesIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -187,8 +260,10 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/admin'
     | '/$locale/dashboard'
+    | '/$locale/events'
     | '/$locale/profile'
     | '/$locale/roadmap'
+    | '/$locale/testimonies'
     | '/login/facebook'
     | '/login/google'
     | '/login/twitter'
@@ -198,16 +273,24 @@ export interface FileRouteTypes {
     | '/$locale/admin/moderation'
     | '/$locale/admin/recommendations'
     | '/$locale/admin/users'
+    | '/$locale/events/create'
+    | '/$locale/testimonies/create'
     | '/login/facebook/callback'
     | '/login/google/callback'
     | '/login/twitter/callback'
+    | '/$locale/events/$id/edit'
+    | '/$locale/testimonies/$id/edit'
+    | '/$locale/events/$id/'
+    | '/$locale/testimonies/$id/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/$locale/admin'
     | '/$locale/dashboard'
+    | '/$locale/events'
     | '/$locale/profile'
     | '/$locale/roadmap'
+    | '/$locale/testimonies'
     | '/login/facebook'
     | '/login/google'
     | '/login/twitter'
@@ -217,17 +300,25 @@ export interface FileRouteTypes {
     | '/$locale/admin/moderation'
     | '/$locale/admin/recommendations'
     | '/$locale/admin/users'
+    | '/$locale/events/create'
+    | '/$locale/testimonies/create'
     | '/login/facebook/callback'
     | '/login/google/callback'
     | '/login/twitter/callback'
+    | '/$locale/events/$id/edit'
+    | '/$locale/testimonies/$id/edit'
+    | '/$locale/events/$id'
+    | '/$locale/testimonies/$id'
   id:
     | '__root__'
     | '/'
     | '/$locale'
     | '/$locale/admin'
     | '/$locale/dashboard'
+    | '/$locale/events'
     | '/$locale/profile'
     | '/$locale/roadmap'
+    | '/$locale/testimonies'
     | '/login/facebook'
     | '/login/google'
     | '/login/twitter'
@@ -237,9 +328,15 @@ export interface FileRouteTypes {
     | '/$locale/admin/moderation'
     | '/$locale/admin/recommendations'
     | '/$locale/admin/users'
+    | '/$locale/events/create'
+    | '/$locale/testimonies/create'
     | '/login/facebook/callback'
     | '/login/google/callback'
     | '/login/twitter/callback'
+    | '/$locale/events/$id/edit'
+    | '/$locale/testimonies/$id/edit'
+    | '/$locale/events/$id/'
+    | '/$locale/testimonies/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -294,6 +391,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginFacebookRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$locale/testimonies': {
+      id: '/$locale/testimonies'
+      path: '/testimonies'
+      fullPath: '/$locale/testimonies'
+      preLoaderRoute: typeof LocaleTestimoniesRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/roadmap': {
       id: '/$locale/roadmap'
       path: '/roadmap'
@@ -306,6 +410,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/$locale/profile'
       preLoaderRoute: typeof LocaleProfileRouteImport
+      parentRoute: typeof LocaleRoute
+    }
+    '/$locale/events': {
+      id: '/$locale/events'
+      path: '/events'
+      fullPath: '/$locale/events'
+      preLoaderRoute: typeof LocaleEventsRouteImport
       parentRoute: typeof LocaleRoute
     }
     '/$locale/dashboard': {
@@ -343,6 +454,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginFacebookCallbackRouteImport
       parentRoute: typeof LoginFacebookRoute
     }
+    '/$locale/testimonies/create': {
+      id: '/$locale/testimonies/create'
+      path: '/create'
+      fullPath: '/$locale/testimonies/create'
+      preLoaderRoute: typeof LocaleTestimoniesCreateRouteImport
+      parentRoute: typeof LocaleTestimoniesRoute
+    }
+    '/$locale/events/create': {
+      id: '/$locale/events/create'
+      path: '/create'
+      fullPath: '/$locale/events/create'
+      preLoaderRoute: typeof LocaleEventsCreateRouteImport
+      parentRoute: typeof LocaleEventsRoute
+    }
     '/$locale/admin/users': {
       id: '/$locale/admin/users'
       path: '/users'
@@ -378,6 +503,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleAdminCoursesRouteImport
       parentRoute: typeof LocaleAdminRoute
     }
+    '/$locale/testimonies/$id/': {
+      id: '/$locale/testimonies/$id/'
+      path: '/$id'
+      fullPath: '/$locale/testimonies/$id/'
+      preLoaderRoute: typeof LocaleTestimoniesIdIndexRouteImport
+      parentRoute: typeof LocaleTestimoniesRoute
+    }
+    '/$locale/events/$id/': {
+      id: '/$locale/events/$id/'
+      path: '/$id'
+      fullPath: '/$locale/events/$id/'
+      preLoaderRoute: typeof LocaleEventsIdIndexRouteImport
+      parentRoute: typeof LocaleEventsRoute
+    }
+    '/$locale/testimonies/$id/edit': {
+      id: '/$locale/testimonies/$id/edit'
+      path: '/$id/edit'
+      fullPath: '/$locale/testimonies/$id/edit'
+      preLoaderRoute: typeof LocaleTestimoniesIdEditRouteImport
+      parentRoute: typeof LocaleTestimoniesRoute
+    }
+    '/$locale/events/$id/edit': {
+      id: '/$locale/events/$id/edit'
+      path: '/$id/edit'
+      fullPath: '/$locale/events/$id/edit'
+      preLoaderRoute: typeof LocaleEventsIdEditRouteImport
+      parentRoute: typeof LocaleEventsRoute
+    }
   }
 }
 
@@ -401,19 +554,54 @@ const LocaleAdminRouteWithChildren = LocaleAdminRoute._addFileChildren(
   LocaleAdminRouteChildren,
 )
 
+interface LocaleEventsRouteChildren {
+  LocaleEventsCreateRoute: typeof LocaleEventsCreateRoute
+  LocaleEventsIdEditRoute: typeof LocaleEventsIdEditRoute
+  LocaleEventsIdIndexRoute: typeof LocaleEventsIdIndexRoute
+}
+
+const LocaleEventsRouteChildren: LocaleEventsRouteChildren = {
+  LocaleEventsCreateRoute: LocaleEventsCreateRoute,
+  LocaleEventsIdEditRoute: LocaleEventsIdEditRoute,
+  LocaleEventsIdIndexRoute: LocaleEventsIdIndexRoute,
+}
+
+const LocaleEventsRouteWithChildren = LocaleEventsRoute._addFileChildren(
+  LocaleEventsRouteChildren,
+)
+
+interface LocaleTestimoniesRouteChildren {
+  LocaleTestimoniesCreateRoute: typeof LocaleTestimoniesCreateRoute
+  LocaleTestimoniesIdEditRoute: typeof LocaleTestimoniesIdEditRoute
+  LocaleTestimoniesIdIndexRoute: typeof LocaleTestimoniesIdIndexRoute
+}
+
+const LocaleTestimoniesRouteChildren: LocaleTestimoniesRouteChildren = {
+  LocaleTestimoniesCreateRoute: LocaleTestimoniesCreateRoute,
+  LocaleTestimoniesIdEditRoute: LocaleTestimoniesIdEditRoute,
+  LocaleTestimoniesIdIndexRoute: LocaleTestimoniesIdIndexRoute,
+}
+
+const LocaleTestimoniesRouteWithChildren =
+  LocaleTestimoniesRoute._addFileChildren(LocaleTestimoniesRouteChildren)
+
 interface LocaleRouteChildren {
   LocaleAdminRoute: typeof LocaleAdminRouteWithChildren
   LocaleDashboardRoute: typeof LocaleDashboardRoute
+  LocaleEventsRoute: typeof LocaleEventsRouteWithChildren
   LocaleProfileRoute: typeof LocaleProfileRoute
   LocaleRoadmapRoute: typeof LocaleRoadmapRoute
+  LocaleTestimoniesRoute: typeof LocaleTestimoniesRouteWithChildren
   LocaleIndexRoute: typeof LocaleIndexRoute
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleAdminRoute: LocaleAdminRouteWithChildren,
   LocaleDashboardRoute: LocaleDashboardRoute,
+  LocaleEventsRoute: LocaleEventsRouteWithChildren,
   LocaleProfileRoute: LocaleProfileRoute,
   LocaleRoadmapRoute: LocaleRoadmapRoute,
+  LocaleTestimoniesRoute: LocaleTestimoniesRouteWithChildren,
   LocaleIndexRoute: LocaleIndexRoute,
 }
 
