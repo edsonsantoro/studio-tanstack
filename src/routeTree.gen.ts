@@ -15,13 +15,21 @@ import { Route as LocaleIndexRouteImport } from './routes/$locale.index'
 import { Route as LoginTwitterRouteImport } from './routes/login.twitter'
 import { Route as LoginGoogleRouteImport } from './routes/login.google'
 import { Route as LoginFacebookRouteImport } from './routes/login.facebook'
+import { Route as LocaleTestimoniesRouteImport } from './routes/$locale.testimonies'
 import { Route as LocaleSignupRouteImport } from './routes/$locale.signup'
 import { Route as LocaleResetPasswordRouteImport } from './routes/$locale.reset-password'
 import { Route as LocaleLoginRouteImport } from './routes/$locale.login'
 import { Route as LocaleForgotPasswordRouteImport } from './routes/$locale.forgot-password'
+import { Route as LocaleEventsRouteImport } from './routes/$locale.events'
 import { Route as LoginTwitterCallbackRouteImport } from './routes/login.twitter.callback'
 import { Route as LoginGoogleCallbackRouteImport } from './routes/login.google.callback'
 import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebook.callback'
+import { Route as LocaleTestimoniesCreateRouteImport } from './routes/$locale.testimonies.create'
+import { Route as LocaleEventsCreateRouteImport } from './routes/$locale.events.create'
+import { Route as LocaleTestimoniesIdIndexRouteImport } from './routes/$locale.testimonies.$id.index'
+import { Route as LocaleEventsIdIndexRouteImport } from './routes/$locale.events.$id.index'
+import { Route as LocaleTestimoniesIdEditRouteImport } from './routes/$locale.testimonies.$id.edit'
+import { Route as LocaleEventsIdEditRouteImport } from './routes/$locale.events.$id.edit'
 
 const LocaleRoute = LocaleRouteImport.update({
   id: '/$locale',
@@ -53,6 +61,11 @@ const LoginFacebookRoute = LoginFacebookRouteImport.update({
   path: '/login/facebook',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocaleTestimoniesRoute = LocaleTestimoniesRouteImport.update({
+  id: '/testimonies',
+  path: '/testimonies',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LocaleSignupRoute = LocaleSignupRouteImport.update({
   id: '/signup',
   path: '/signup',
@@ -73,6 +86,11 @@ const LocaleForgotPasswordRoute = LocaleForgotPasswordRouteImport.update({
   path: '/forgot-password',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocaleEventsRoute = LocaleEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LoginTwitterCallbackRoute = LoginTwitterCallbackRouteImport.update({
   id: '/callback',
   path: '/callback',
@@ -88,97 +106,176 @@ const LoginFacebookCallbackRoute = LoginFacebookCallbackRouteImport.update({
   path: '/callback',
   getParentRoute: () => LoginFacebookRoute,
 } as any)
+const LocaleTestimoniesCreateRoute = LocaleTestimoniesCreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => LocaleTestimoniesRoute,
+} as any)
+const LocaleEventsCreateRoute = LocaleEventsCreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => LocaleEventsRoute,
+} as any)
+const LocaleTestimoniesIdIndexRoute =
+  LocaleTestimoniesIdIndexRouteImport.update({
+    id: '/$id/',
+    path: '/$id/',
+    getParentRoute: () => LocaleTestimoniesRoute,
+  } as any)
+const LocaleEventsIdIndexRoute = LocaleEventsIdIndexRouteImport.update({
+  id: '/$id/',
+  path: '/$id/',
+  getParentRoute: () => LocaleEventsRoute,
+} as any)
+const LocaleTestimoniesIdEditRoute = LocaleTestimoniesIdEditRouteImport.update({
+  id: '/$id/edit',
+  path: '/$id/edit',
+  getParentRoute: () => LocaleTestimoniesRoute,
+} as any)
+const LocaleEventsIdEditRoute = LocaleEventsIdEditRouteImport.update({
+  id: '/$id/edit',
+  path: '/$id/edit',
+  getParentRoute: () => LocaleEventsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/$locale/events': typeof LocaleEventsRouteWithChildren
   '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
   '/$locale/login': typeof LocaleLoginRoute
   '/$locale/reset-password': typeof LocaleResetPasswordRoute
   '/$locale/signup': typeof LocaleSignupRoute
+  '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
   '/login/facebook': typeof LoginFacebookRouteWithChildren
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/events/create': typeof LocaleEventsCreateRoute
+  '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
   '/login/twitter/callback': typeof LoginTwitterCallbackRoute
+  '/$locale/events/$id/edit': typeof LocaleEventsIdEditRoute
+  '/$locale/testimonies/$id/edit': typeof LocaleTestimoniesIdEditRoute
+  '/$locale/events/$id/': typeof LocaleEventsIdIndexRoute
+  '/$locale/testimonies/$id/': typeof LocaleTestimoniesIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$locale/events': typeof LocaleEventsRouteWithChildren
   '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
   '/$locale/login': typeof LocaleLoginRoute
   '/$locale/reset-password': typeof LocaleResetPasswordRoute
   '/$locale/signup': typeof LocaleSignupRoute
+  '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
   '/login/facebook': typeof LoginFacebookRouteWithChildren
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale': typeof LocaleIndexRoute
+  '/$locale/events/create': typeof LocaleEventsCreateRoute
+  '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
   '/login/twitter/callback': typeof LoginTwitterCallbackRoute
+  '/$locale/events/$id/edit': typeof LocaleEventsIdEditRoute
+  '/$locale/testimonies/$id/edit': typeof LocaleTestimoniesIdEditRoute
+  '/$locale/events/$id': typeof LocaleEventsIdIndexRoute
+  '/$locale/testimonies/$id': typeof LocaleTestimoniesIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/$locale/events': typeof LocaleEventsRouteWithChildren
   '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
   '/$locale/login': typeof LocaleLoginRoute
   '/$locale/reset-password': typeof LocaleResetPasswordRoute
   '/$locale/signup': typeof LocaleSignupRoute
+  '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
   '/login/facebook': typeof LoginFacebookRouteWithChildren
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/events/create': typeof LocaleEventsCreateRoute
+  '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
   '/login/twitter/callback': typeof LoginTwitterCallbackRoute
+  '/$locale/events/$id/edit': typeof LocaleEventsIdEditRoute
+  '/$locale/testimonies/$id/edit': typeof LocaleTestimoniesIdEditRoute
+  '/$locale/events/$id/': typeof LocaleEventsIdIndexRoute
+  '/$locale/testimonies/$id/': typeof LocaleTestimoniesIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/$locale'
+    | '/$locale/events'
     | '/$locale/forgot-password'
     | '/$locale/login'
     | '/$locale/reset-password'
     | '/$locale/signup'
+    | '/$locale/testimonies'
     | '/login/facebook'
     | '/login/google'
     | '/login/twitter'
     | '/$locale/'
+    | '/$locale/events/create'
+    | '/$locale/testimonies/create'
     | '/login/facebook/callback'
     | '/login/google/callback'
     | '/login/twitter/callback'
+    | '/$locale/events/$id/edit'
+    | '/$locale/testimonies/$id/edit'
+    | '/$locale/events/$id/'
+    | '/$locale/testimonies/$id/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$locale/events'
     | '/$locale/forgot-password'
     | '/$locale/login'
     | '/$locale/reset-password'
     | '/$locale/signup'
+    | '/$locale/testimonies'
     | '/login/facebook'
     | '/login/google'
     | '/login/twitter'
     | '/$locale'
+    | '/$locale/events/create'
+    | '/$locale/testimonies/create'
     | '/login/facebook/callback'
     | '/login/google/callback'
     | '/login/twitter/callback'
+    | '/$locale/events/$id/edit'
+    | '/$locale/testimonies/$id/edit'
+    | '/$locale/events/$id'
+    | '/$locale/testimonies/$id'
   id:
     | '__root__'
     | '/'
     | '/$locale'
+    | '/$locale/events'
     | '/$locale/forgot-password'
     | '/$locale/login'
     | '/$locale/reset-password'
     | '/$locale/signup'
+    | '/$locale/testimonies'
     | '/login/facebook'
     | '/login/google'
     | '/login/twitter'
     | '/$locale/'
+    | '/$locale/events/create'
+    | '/$locale/testimonies/create'
     | '/login/facebook/callback'
     | '/login/google/callback'
     | '/login/twitter/callback'
+    | '/$locale/events/$id/edit'
+    | '/$locale/testimonies/$id/edit'
+    | '/$locale/events/$id/'
+    | '/$locale/testimonies/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -233,6 +330,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginFacebookRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$locale/testimonies': {
+      id: '/$locale/testimonies'
+      path: '/testimonies'
+      fullPath: '/$locale/testimonies'
+      preLoaderRoute: typeof LocaleTestimoniesRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/signup': {
       id: '/$locale/signup'
       path: '/signup'
@@ -261,6 +365,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleForgotPasswordRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/events': {
+      id: '/$locale/events'
+      path: '/events'
+      fullPath: '/$locale/events'
+      preLoaderRoute: typeof LocaleEventsRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/login/twitter/callback': {
       id: '/login/twitter/callback'
       path: '/callback'
@@ -282,22 +393,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginFacebookCallbackRouteImport
       parentRoute: typeof LoginFacebookRoute
     }
+    '/$locale/testimonies/create': {
+      id: '/$locale/testimonies/create'
+      path: '/create'
+      fullPath: '/$locale/testimonies/create'
+      preLoaderRoute: typeof LocaleTestimoniesCreateRouteImport
+      parentRoute: typeof LocaleTestimoniesRoute
+    }
+    '/$locale/events/create': {
+      id: '/$locale/events/create'
+      path: '/create'
+      fullPath: '/$locale/events/create'
+      preLoaderRoute: typeof LocaleEventsCreateRouteImport
+      parentRoute: typeof LocaleEventsRoute
+    }
+    '/$locale/testimonies/$id/': {
+      id: '/$locale/testimonies/$id/'
+      path: '/$id'
+      fullPath: '/$locale/testimonies/$id/'
+      preLoaderRoute: typeof LocaleTestimoniesIdIndexRouteImport
+      parentRoute: typeof LocaleTestimoniesRoute
+    }
+    '/$locale/events/$id/': {
+      id: '/$locale/events/$id/'
+      path: '/$id'
+      fullPath: '/$locale/events/$id/'
+      preLoaderRoute: typeof LocaleEventsIdIndexRouteImport
+      parentRoute: typeof LocaleEventsRoute
+    }
+    '/$locale/testimonies/$id/edit': {
+      id: '/$locale/testimonies/$id/edit'
+      path: '/$id/edit'
+      fullPath: '/$locale/testimonies/$id/edit'
+      preLoaderRoute: typeof LocaleTestimoniesIdEditRouteImport
+      parentRoute: typeof LocaleTestimoniesRoute
+    }
+    '/$locale/events/$id/edit': {
+      id: '/$locale/events/$id/edit'
+      path: '/$id/edit'
+      fullPath: '/$locale/events/$id/edit'
+      preLoaderRoute: typeof LocaleEventsIdEditRouteImport
+      parentRoute: typeof LocaleEventsRoute
+    }
   }
 }
 
+interface LocaleEventsRouteChildren {
+  LocaleEventsCreateRoute: typeof LocaleEventsCreateRoute
+  LocaleEventsIdEditRoute: typeof LocaleEventsIdEditRoute
+  LocaleEventsIdIndexRoute: typeof LocaleEventsIdIndexRoute
+}
+
+const LocaleEventsRouteChildren: LocaleEventsRouteChildren = {
+  LocaleEventsCreateRoute: LocaleEventsCreateRoute,
+  LocaleEventsIdEditRoute: LocaleEventsIdEditRoute,
+  LocaleEventsIdIndexRoute: LocaleEventsIdIndexRoute,
+}
+
+const LocaleEventsRouteWithChildren = LocaleEventsRoute._addFileChildren(
+  LocaleEventsRouteChildren,
+)
+
+interface LocaleTestimoniesRouteChildren {
+  LocaleTestimoniesCreateRoute: typeof LocaleTestimoniesCreateRoute
+  LocaleTestimoniesIdEditRoute: typeof LocaleTestimoniesIdEditRoute
+  LocaleTestimoniesIdIndexRoute: typeof LocaleTestimoniesIdIndexRoute
+}
+
+const LocaleTestimoniesRouteChildren: LocaleTestimoniesRouteChildren = {
+  LocaleTestimoniesCreateRoute: LocaleTestimoniesCreateRoute,
+  LocaleTestimoniesIdEditRoute: LocaleTestimoniesIdEditRoute,
+  LocaleTestimoniesIdIndexRoute: LocaleTestimoniesIdIndexRoute,
+}
+
+const LocaleTestimoniesRouteWithChildren =
+  LocaleTestimoniesRoute._addFileChildren(LocaleTestimoniesRouteChildren)
+
 interface LocaleRouteChildren {
+  LocaleEventsRoute: typeof LocaleEventsRouteWithChildren
   LocaleForgotPasswordRoute: typeof LocaleForgotPasswordRoute
   LocaleLoginRoute: typeof LocaleLoginRoute
   LocaleResetPasswordRoute: typeof LocaleResetPasswordRoute
   LocaleSignupRoute: typeof LocaleSignupRoute
+  LocaleTestimoniesRoute: typeof LocaleTestimoniesRouteWithChildren
   LocaleIndexRoute: typeof LocaleIndexRoute
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
+  LocaleEventsRoute: LocaleEventsRouteWithChildren,
   LocaleForgotPasswordRoute: LocaleForgotPasswordRoute,
   LocaleLoginRoute: LocaleLoginRoute,
   LocaleResetPasswordRoute: LocaleResetPasswordRoute,
   LocaleSignupRoute: LocaleSignupRoute,
+  LocaleTestimoniesRoute: LocaleTestimoniesRouteWithChildren,
   LocaleIndexRoute: LocaleIndexRoute,
 }
 
@@ -350,3 +538,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
