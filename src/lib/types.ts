@@ -153,3 +153,6 @@ export type Testimony = {
   isPublic: boolean | null;
   createdAt: Date | null;
 };
+
+export type RoadmapItemWithVotes = any;
+export type RoadmapCommentWithUser = any;
