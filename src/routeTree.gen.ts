@@ -12,6 +12,16 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as LocaleRouteImport } from './routes/$locale'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleIndexRouteImport } from './routes/$locale.index'
+import { Route as LoginTwitterRouteImport } from './routes/login.twitter'
+import { Route as LoginGoogleRouteImport } from './routes/login.google'
+import { Route as LoginFacebookRouteImport } from './routes/login.facebook'
+import { Route as LocaleSignupRouteImport } from './routes/$locale.signup'
+import { Route as LocaleResetPasswordRouteImport } from './routes/$locale.reset-password'
+import { Route as LocaleLoginRouteImport } from './routes/$locale.login'
+import { Route as LocaleForgotPasswordRouteImport } from './routes/$locale.forgot-password'
+import { Route as LoginTwitterCallbackRouteImport } from './routes/login.twitter.callback'
+import { Route as LoginGoogleCallbackRouteImport } from './routes/login.google.callback'
+import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebook.callback'
 
 const LocaleRoute = LocaleRouteImport.update({
   id: '/$locale',
@@ -28,33 +38,155 @@ const LocaleIndexRoute = LocaleIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LoginTwitterRoute = LoginTwitterRouteImport.update({
+  id: '/login/twitter',
+  path: '/login/twitter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginGoogleRoute = LoginGoogleRouteImport.update({
+  id: '/login/google',
+  path: '/login/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginFacebookRoute = LoginFacebookRouteImport.update({
+  id: '/login/facebook',
+  path: '/login/facebook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleSignupRoute = LocaleSignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LocaleResetPasswordRoute = LocaleResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LocaleLoginRoute = LocaleLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LocaleForgotPasswordRoute = LocaleForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LoginTwitterCallbackRoute = LoginTwitterCallbackRouteImport.update({
+  id: '/callback',
+  path: '/callback',
+  getParentRoute: () => LoginTwitterRoute,
+} as any)
+const LoginGoogleCallbackRoute = LoginGoogleCallbackRouteImport.update({
+  id: '/callback',
+  path: '/callback',
+  getParentRoute: () => LoginGoogleRoute,
+} as any)
+const LoginFacebookCallbackRoute = LoginFacebookCallbackRouteImport.update({
+  id: '/callback',
+  path: '/callback',
+  getParentRoute: () => LoginFacebookRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
+  '/$locale/login': typeof LocaleLoginRoute
+  '/$locale/reset-password': typeof LocaleResetPasswordRoute
+  '/$locale/signup': typeof LocaleSignupRoute
+  '/login/facebook': typeof LoginFacebookRouteWithChildren
+  '/login/google': typeof LoginGoogleRouteWithChildren
+  '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/login/facebook/callback': typeof LoginFacebookCallbackRoute
+  '/login/google/callback': typeof LoginGoogleCallbackRoute
+  '/login/twitter/callback': typeof LoginTwitterCallbackRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
+  '/$locale/login': typeof LocaleLoginRoute
+  '/$locale/reset-password': typeof LocaleResetPasswordRoute
+  '/$locale/signup': typeof LocaleSignupRoute
+  '/login/facebook': typeof LoginFacebookRouteWithChildren
+  '/login/google': typeof LoginGoogleRouteWithChildren
+  '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale': typeof LocaleIndexRoute
+  '/login/facebook/callback': typeof LoginFacebookCallbackRoute
+  '/login/google/callback': typeof LoginGoogleCallbackRoute
+  '/login/twitter/callback': typeof LoginTwitterCallbackRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
+  '/$locale/login': typeof LocaleLoginRoute
+  '/$locale/reset-password': typeof LocaleResetPasswordRoute
+  '/$locale/signup': typeof LocaleSignupRoute
+  '/login/facebook': typeof LoginFacebookRouteWithChildren
+  '/login/google': typeof LoginGoogleRouteWithChildren
+  '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/login/facebook/callback': typeof LoginFacebookCallbackRoute
+  '/login/google/callback': typeof LoginGoogleCallbackRoute
+  '/login/twitter/callback': typeof LoginTwitterCallbackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$locale' | '/$locale/'
+  fullPaths:
+    | '/'
+    | '/$locale'
+    | '/$locale/forgot-password'
+    | '/$locale/login'
+    | '/$locale/reset-password'
+    | '/$locale/signup'
+    | '/login/facebook'
+    | '/login/google'
+    | '/login/twitter'
+    | '/$locale/'
+    | '/login/facebook/callback'
+    | '/login/google/callback'
+    | '/login/twitter/callback'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$locale'
-  id: '__root__' | '/' | '/$locale' | '/$locale/'
+  to:
+    | '/'
+    | '/$locale/forgot-password'
+    | '/$locale/login'
+    | '/$locale/reset-password'
+    | '/$locale/signup'
+    | '/login/facebook'
+    | '/login/google'
+    | '/login/twitter'
+    | '/$locale'
+    | '/login/facebook/callback'
+    | '/login/google/callback'
+    | '/login/twitter/callback'
+  id:
+    | '__root__'
+    | '/'
+    | '/$locale'
+    | '/$locale/forgot-password'
+    | '/$locale/login'
+    | '/$locale/reset-password'
+    | '/$locale/signup'
+    | '/login/facebook'
+    | '/login/google'
+    | '/login/twitter'
+    | '/$locale/'
+    | '/login/facebook/callback'
+    | '/login/google/callback'
+    | '/login/twitter/callback'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LocaleRoute: typeof LocaleRouteWithChildren
+  LoginFacebookRoute: typeof LoginFacebookRouteWithChildren
+  LoginGoogleRoute: typeof LoginGoogleRouteWithChildren
+  LoginTwitterRoute: typeof LoginTwitterRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -80,23 +212,140 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleIndexRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/login/twitter': {
+      id: '/login/twitter'
+      path: '/login/twitter'
+      fullPath: '/login/twitter'
+      preLoaderRoute: typeof LoginTwitterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login/google': {
+      id: '/login/google'
+      path: '/login/google'
+      fullPath: '/login/google'
+      preLoaderRoute: typeof LoginGoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login/facebook': {
+      id: '/login/facebook'
+      path: '/login/facebook'
+      fullPath: '/login/facebook'
+      preLoaderRoute: typeof LoginFacebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/signup': {
+      id: '/$locale/signup'
+      path: '/signup'
+      fullPath: '/$locale/signup'
+      preLoaderRoute: typeof LocaleSignupRouteImport
+      parentRoute: typeof LocaleRoute
+    }
+    '/$locale/reset-password': {
+      id: '/$locale/reset-password'
+      path: '/reset-password'
+      fullPath: '/$locale/reset-password'
+      preLoaderRoute: typeof LocaleResetPasswordRouteImport
+      parentRoute: typeof LocaleRoute
+    }
+    '/$locale/login': {
+      id: '/$locale/login'
+      path: '/login'
+      fullPath: '/$locale/login'
+      preLoaderRoute: typeof LocaleLoginRouteImport
+      parentRoute: typeof LocaleRoute
+    }
+    '/$locale/forgot-password': {
+      id: '/$locale/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/$locale/forgot-password'
+      preLoaderRoute: typeof LocaleForgotPasswordRouteImport
+      parentRoute: typeof LocaleRoute
+    }
+    '/login/twitter/callback': {
+      id: '/login/twitter/callback'
+      path: '/callback'
+      fullPath: '/login/twitter/callback'
+      preLoaderRoute: typeof LoginTwitterCallbackRouteImport
+      parentRoute: typeof LoginTwitterRoute
+    }
+    '/login/google/callback': {
+      id: '/login/google/callback'
+      path: '/callback'
+      fullPath: '/login/google/callback'
+      preLoaderRoute: typeof LoginGoogleCallbackRouteImport
+      parentRoute: typeof LoginGoogleRoute
+    }
+    '/login/facebook/callback': {
+      id: '/login/facebook/callback'
+      path: '/callback'
+      fullPath: '/login/facebook/callback'
+      preLoaderRoute: typeof LoginFacebookCallbackRouteImport
+      parentRoute: typeof LoginFacebookRoute
+    }
   }
 }
 
 interface LocaleRouteChildren {
+  LocaleForgotPasswordRoute: typeof LocaleForgotPasswordRoute
+  LocaleLoginRoute: typeof LocaleLoginRoute
+  LocaleResetPasswordRoute: typeof LocaleResetPasswordRoute
+  LocaleSignupRoute: typeof LocaleSignupRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
+  LocaleForgotPasswordRoute: LocaleForgotPasswordRoute,
+  LocaleLoginRoute: LocaleLoginRoute,
+  LocaleResetPasswordRoute: LocaleResetPasswordRoute,
+  LocaleSignupRoute: LocaleSignupRoute,
   LocaleIndexRoute: LocaleIndexRoute,
 }
 
 const LocaleRouteWithChildren =
   LocaleRoute._addFileChildren(LocaleRouteChildren)
 
+interface LoginFacebookRouteChildren {
+  LoginFacebookCallbackRoute: typeof LoginFacebookCallbackRoute
+}
+
+const LoginFacebookRouteChildren: LoginFacebookRouteChildren = {
+  LoginFacebookCallbackRoute: LoginFacebookCallbackRoute,
+}
+
+const LoginFacebookRouteWithChildren = LoginFacebookRoute._addFileChildren(
+  LoginFacebookRouteChildren,
+)
+
+interface LoginGoogleRouteChildren {
+  LoginGoogleCallbackRoute: typeof LoginGoogleCallbackRoute
+}
+
+const LoginGoogleRouteChildren: LoginGoogleRouteChildren = {
+  LoginGoogleCallbackRoute: LoginGoogleCallbackRoute,
+}
+
+const LoginGoogleRouteWithChildren = LoginGoogleRoute._addFileChildren(
+  LoginGoogleRouteChildren,
+)
+
+interface LoginTwitterRouteChildren {
+  LoginTwitterCallbackRoute: typeof LoginTwitterCallbackRoute
+}
+
+const LoginTwitterRouteChildren: LoginTwitterRouteChildren = {
+  LoginTwitterCallbackRoute: LoginTwitterCallbackRoute,
+}
+
+const LoginTwitterRouteWithChildren = LoginTwitterRoute._addFileChildren(
+  LoginTwitterRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LocaleRoute: LocaleRouteWithChildren,
+  LoginFacebookRoute: LoginFacebookRouteWithChildren,
+  LoginGoogleRoute: LoginGoogleRouteWithChildren,
+  LoginTwitterRoute: LoginTwitterRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
