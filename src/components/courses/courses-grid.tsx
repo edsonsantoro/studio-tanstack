@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { HotmartProduct } from '@/lib/hotmart';
+import type { HotmartProduct } from '@/lib/hotmart';
 import { CourseCard } from '@/components/courses/course-card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';

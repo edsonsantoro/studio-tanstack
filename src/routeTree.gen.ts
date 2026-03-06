@@ -18,7 +18,9 @@ import { Route as LoginFacebookRouteImport } from './routes/login.facebook'
 import { Route as LocaleTestimoniesRouteImport } from './routes/$locale.testimonies'
 import { Route as LocaleTermsOfServiceRouteImport } from './routes/$locale.terms-of-service'
 import { Route as LocaleSignupRouteImport } from './routes/$locale.signup'
+import { Route as LocaleRoadmapRouteImport } from './routes/$locale.roadmap'
 import { Route as LocaleResetPasswordRouteImport } from './routes/$locale.reset-password'
+import { Route as LocaleProfileRouteImport } from './routes/$locale.profile'
 import { Route as LocalePrivacyPolicyRouteImport } from './routes/$locale.privacy-policy'
 import { Route as LocaleLoginRouteImport } from './routes/$locale.login'
 import { Route as LocaleForgotPasswordRouteImport } from './routes/$locale.forgot-password'
@@ -27,6 +29,7 @@ import { Route as LocaleDataDeletionRouteImport } from './routes/$locale.data-de
 import { Route as LocaleDashboardRouteImport } from './routes/$locale.dashboard'
 import { Route as LocaleCoursesRouteImport } from './routes/$locale.courses'
 import { Route as LocaleAdminRouteImport } from './routes/$locale.admin'
+import { Route as LocaleAdminIndexRouteImport } from './routes/$locale.admin.index'
 import { Route as LoginTwitterCallbackRouteImport } from './routes/login.twitter.callback'
 import { Route as LoginGoogleCallbackRouteImport } from './routes/login.google.callback'
 import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebook.callback'
@@ -34,13 +37,17 @@ import { Route as LocaleTestimoniesCreateRouteImport } from './routes/$locale.te
 import { Route as LocaleEventsCreateRouteImport } from './routes/$locale.events.create'
 import { Route as LocaleAdminUsersRouteImport } from './routes/$locale.admin.users'
 import { Route as LocaleAdminTranslationsRouteImport } from './routes/$locale.admin.translations'
+import { Route as LocaleAdminRoadmapRouteImport } from './routes/$locale.admin.roadmap'
 import { Route as LocaleAdminRecommendationsRouteImport } from './routes/$locale.admin.recommendations'
 import { Route as LocaleAdminModerationRouteImport } from './routes/$locale.admin.moderation'
+import { Route as LocaleAdminFeedbackRouteImport } from './routes/$locale.admin.feedback'
 import { Route as LocaleAdminCoursesRouteImport } from './routes/$locale.admin.courses'
+import { Route as LocaleAdminAddMemberRouteImport } from './routes/$locale.admin.add-member'
 import { Route as LocaleTestimoniesIdIndexRouteImport } from './routes/$locale.testimonies.$id.index'
 import { Route as LocaleEventsIdIndexRouteImport } from './routes/$locale.events.$id.index'
 import { Route as LocaleTestimoniesIdEditRouteImport } from './routes/$locale.testimonies.$id.edit'
 import { Route as LocaleEventsIdEditRouteImport } from './routes/$locale.events.$id.edit'
+import { Route as LocaleAdminUsersIdEditRouteImport } from './routes/$locale.admin.users.$id.edit'
 
 const LocaleRoute = LocaleRouteImport.update({
   id: '/$locale',
@@ -87,9 +94,19 @@ const LocaleSignupRoute = LocaleSignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocaleRoadmapRoute = LocaleRoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LocaleResetPasswordRoute = LocaleResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LocaleProfileRoute = LocaleProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => LocaleRoute,
 } as any)
 const LocalePrivacyPolicyRoute = LocalePrivacyPolicyRouteImport.update({
@@ -132,6 +149,11 @@ const LocaleAdminRoute = LocaleAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocaleAdminIndexRoute = LocaleAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LocaleAdminRoute,
+} as any)
 const LoginTwitterCallbackRoute = LoginTwitterCallbackRouteImport.update({
   id: '/callback',
   path: '/callback',
@@ -167,6 +189,11 @@ const LocaleAdminTranslationsRoute = LocaleAdminTranslationsRouteImport.update({
   path: '/translations',
   getParentRoute: () => LocaleAdminRoute,
 } as any)
+const LocaleAdminRoadmapRoute = LocaleAdminRoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => LocaleAdminRoute,
+} as any)
 const LocaleAdminRecommendationsRoute =
   LocaleAdminRecommendationsRouteImport.update({
     id: '/recommendations',
@@ -178,9 +205,19 @@ const LocaleAdminModerationRoute = LocaleAdminModerationRouteImport.update({
   path: '/moderation',
   getParentRoute: () => LocaleAdminRoute,
 } as any)
+const LocaleAdminFeedbackRoute = LocaleAdminFeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => LocaleAdminRoute,
+} as any)
 const LocaleAdminCoursesRoute = LocaleAdminCoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
+  getParentRoute: () => LocaleAdminRoute,
+} as any)
+const LocaleAdminAddMemberRoute = LocaleAdminAddMemberRouteImport.update({
+  id: '/add-member',
+  path: '/add-member',
   getParentRoute: () => LocaleAdminRoute,
 } as any)
 const LocaleTestimoniesIdIndexRoute =
@@ -204,6 +241,11 @@ const LocaleEventsIdEditRoute = LocaleEventsIdEditRouteImport.update({
   path: '/$id/edit',
   getParentRoute: () => LocaleEventsRoute,
 } as any)
+const LocaleAdminUsersIdEditRoute = LocaleAdminUsersIdEditRouteImport.update({
+  id: '/$id/edit',
+  path: '/$id/edit',
+  getParentRoute: () => LocaleAdminUsersRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -216,7 +258,9 @@ export interface FileRoutesByFullPath {
   '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
   '/$locale/login': typeof LocaleLoginRoute
   '/$locale/privacy-policy': typeof LocalePrivacyPolicyRoute
+  '/$locale/profile': typeof LocaleProfileRoute
   '/$locale/reset-password': typeof LocaleResetPasswordRoute
+  '/$locale/roadmap': typeof LocaleRoadmapRoute
   '/$locale/signup': typeof LocaleSignupRoute
   '/$locale/terms-of-service': typeof LocaleTermsOfServiceRoute
   '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
@@ -224,24 +268,28 @@ export interface FileRoutesByFullPath {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/admin/add-member': typeof LocaleAdminAddMemberRoute
   '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/feedback': typeof LocaleAdminFeedbackRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
+  '/$locale/admin/roadmap': typeof LocaleAdminRoadmapRoute
   '/$locale/admin/translations': typeof LocaleAdminTranslationsRoute
-  '/$locale/admin/users': typeof LocaleAdminUsersRoute
+  '/$locale/admin/users': typeof LocaleAdminUsersRouteWithChildren
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
   '/login/twitter/callback': typeof LoginTwitterCallbackRoute
+  '/$locale/admin/': typeof LocaleAdminIndexRoute
   '/$locale/events/$id/edit': typeof LocaleEventsIdEditRoute
   '/$locale/testimonies/$id/edit': typeof LocaleTestimoniesIdEditRoute
   '/$locale/events/$id/': typeof LocaleEventsIdIndexRoute
   '/$locale/testimonies/$id/': typeof LocaleTestimoniesIdIndexRoute
+  '/$locale/admin/users/$id/edit': typeof LocaleAdminUsersIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/$locale/admin': typeof LocaleAdminRouteWithChildren
   '/$locale/courses': typeof LocaleCoursesRoute
   '/$locale/dashboard': typeof LocaleDashboardRoute
   '/$locale/data-deletion': typeof LocaleDataDeletionRoute
@@ -249,7 +297,9 @@ export interface FileRoutesByTo {
   '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
   '/$locale/login': typeof LocaleLoginRoute
   '/$locale/privacy-policy': typeof LocalePrivacyPolicyRoute
+  '/$locale/profile': typeof LocaleProfileRoute
   '/$locale/reset-password': typeof LocaleResetPasswordRoute
+  '/$locale/roadmap': typeof LocaleRoadmapRoute
   '/$locale/signup': typeof LocaleSignupRoute
   '/$locale/terms-of-service': typeof LocaleTermsOfServiceRoute
   '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
@@ -257,20 +307,25 @@ export interface FileRoutesByTo {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale': typeof LocaleIndexRoute
+  '/$locale/admin/add-member': typeof LocaleAdminAddMemberRoute
   '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/feedback': typeof LocaleAdminFeedbackRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
+  '/$locale/admin/roadmap': typeof LocaleAdminRoadmapRoute
   '/$locale/admin/translations': typeof LocaleAdminTranslationsRoute
-  '/$locale/admin/users': typeof LocaleAdminUsersRoute
+  '/$locale/admin/users': typeof LocaleAdminUsersRouteWithChildren
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
   '/login/twitter/callback': typeof LoginTwitterCallbackRoute
+  '/$locale/admin': typeof LocaleAdminIndexRoute
   '/$locale/events/$id/edit': typeof LocaleEventsIdEditRoute
   '/$locale/testimonies/$id/edit': typeof LocaleTestimoniesIdEditRoute
   '/$locale/events/$id': typeof LocaleEventsIdIndexRoute
   '/$locale/testimonies/$id': typeof LocaleTestimoniesIdIndexRoute
+  '/$locale/admin/users/$id/edit': typeof LocaleAdminUsersIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -284,7 +339,9 @@ export interface FileRoutesById {
   '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
   '/$locale/login': typeof LocaleLoginRoute
   '/$locale/privacy-policy': typeof LocalePrivacyPolicyRoute
+  '/$locale/profile': typeof LocaleProfileRoute
   '/$locale/reset-password': typeof LocaleResetPasswordRoute
+  '/$locale/roadmap': typeof LocaleRoadmapRoute
   '/$locale/signup': typeof LocaleSignupRoute
   '/$locale/terms-of-service': typeof LocaleTermsOfServiceRoute
   '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
@@ -292,20 +349,25 @@ export interface FileRoutesById {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/admin/add-member': typeof LocaleAdminAddMemberRoute
   '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/feedback': typeof LocaleAdminFeedbackRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
+  '/$locale/admin/roadmap': typeof LocaleAdminRoadmapRoute
   '/$locale/admin/translations': typeof LocaleAdminTranslationsRoute
-  '/$locale/admin/users': typeof LocaleAdminUsersRoute
+  '/$locale/admin/users': typeof LocaleAdminUsersRouteWithChildren
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
   '/login/twitter/callback': typeof LoginTwitterCallbackRoute
+  '/$locale/admin/': typeof LocaleAdminIndexRoute
   '/$locale/events/$id/edit': typeof LocaleEventsIdEditRoute
   '/$locale/testimonies/$id/edit': typeof LocaleTestimoniesIdEditRoute
   '/$locale/events/$id/': typeof LocaleEventsIdIndexRoute
   '/$locale/testimonies/$id/': typeof LocaleTestimoniesIdIndexRoute
+  '/$locale/admin/users/$id/edit': typeof LocaleAdminUsersIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -320,7 +382,9 @@ export interface FileRouteTypes {
     | '/$locale/forgot-password'
     | '/$locale/login'
     | '/$locale/privacy-policy'
+    | '/$locale/profile'
     | '/$locale/reset-password'
+    | '/$locale/roadmap'
     | '/$locale/signup'
     | '/$locale/terms-of-service'
     | '/$locale/testimonies'
@@ -328,9 +392,12 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale/'
+    | '/$locale/admin/add-member'
     | '/$locale/admin/courses'
+    | '/$locale/admin/feedback'
     | '/$locale/admin/moderation'
     | '/$locale/admin/recommendations'
+    | '/$locale/admin/roadmap'
     | '/$locale/admin/translations'
     | '/$locale/admin/users'
     | '/$locale/events/create'
@@ -338,14 +405,15 @@ export interface FileRouteTypes {
     | '/login/facebook/callback'
     | '/login/google/callback'
     | '/login/twitter/callback'
+    | '/$locale/admin/'
     | '/$locale/events/$id/edit'
     | '/$locale/testimonies/$id/edit'
     | '/$locale/events/$id/'
     | '/$locale/testimonies/$id/'
+    | '/$locale/admin/users/$id/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/$locale/admin'
     | '/$locale/courses'
     | '/$locale/dashboard'
     | '/$locale/data-deletion'
@@ -353,7 +421,9 @@ export interface FileRouteTypes {
     | '/$locale/forgot-password'
     | '/$locale/login'
     | '/$locale/privacy-policy'
+    | '/$locale/profile'
     | '/$locale/reset-password'
+    | '/$locale/roadmap'
     | '/$locale/signup'
     | '/$locale/terms-of-service'
     | '/$locale/testimonies'
@@ -361,9 +431,12 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale'
+    | '/$locale/admin/add-member'
     | '/$locale/admin/courses'
+    | '/$locale/admin/feedback'
     | '/$locale/admin/moderation'
     | '/$locale/admin/recommendations'
+    | '/$locale/admin/roadmap'
     | '/$locale/admin/translations'
     | '/$locale/admin/users'
     | '/$locale/events/create'
@@ -371,10 +444,12 @@ export interface FileRouteTypes {
     | '/login/facebook/callback'
     | '/login/google/callback'
     | '/login/twitter/callback'
+    | '/$locale/admin'
     | '/$locale/events/$id/edit'
     | '/$locale/testimonies/$id/edit'
     | '/$locale/events/$id'
     | '/$locale/testimonies/$id'
+    | '/$locale/admin/users/$id/edit'
   id:
     | '__root__'
     | '/'
@@ -387,7 +462,9 @@ export interface FileRouteTypes {
     | '/$locale/forgot-password'
     | '/$locale/login'
     | '/$locale/privacy-policy'
+    | '/$locale/profile'
     | '/$locale/reset-password'
+    | '/$locale/roadmap'
     | '/$locale/signup'
     | '/$locale/terms-of-service'
     | '/$locale/testimonies'
@@ -395,9 +472,12 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale/'
+    | '/$locale/admin/add-member'
     | '/$locale/admin/courses'
+    | '/$locale/admin/feedback'
     | '/$locale/admin/moderation'
     | '/$locale/admin/recommendations'
+    | '/$locale/admin/roadmap'
     | '/$locale/admin/translations'
     | '/$locale/admin/users'
     | '/$locale/events/create'
@@ -405,10 +485,12 @@ export interface FileRouteTypes {
     | '/login/facebook/callback'
     | '/login/google/callback'
     | '/login/twitter/callback'
+    | '/$locale/admin/'
     | '/$locale/events/$id/edit'
     | '/$locale/testimonies/$id/edit'
     | '/$locale/events/$id/'
     | '/$locale/testimonies/$id/'
+    | '/$locale/admin/users/$id/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -484,11 +566,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleSignupRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/roadmap': {
+      id: '/$locale/roadmap'
+      path: '/roadmap'
+      fullPath: '/$locale/roadmap'
+      preLoaderRoute: typeof LocaleRoadmapRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/reset-password': {
       id: '/$locale/reset-password'
       path: '/reset-password'
       fullPath: '/$locale/reset-password'
       preLoaderRoute: typeof LocaleResetPasswordRouteImport
+      parentRoute: typeof LocaleRoute
+    }
+    '/$locale/profile': {
+      id: '/$locale/profile'
+      path: '/profile'
+      fullPath: '/$locale/profile'
+      preLoaderRoute: typeof LocaleProfileRouteImport
       parentRoute: typeof LocaleRoute
     }
     '/$locale/privacy-policy': {
@@ -547,6 +643,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleAdminRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/admin/': {
+      id: '/$locale/admin/'
+      path: '/'
+      fullPath: '/$locale/admin/'
+      preLoaderRoute: typeof LocaleAdminIndexRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
     '/login/twitter/callback': {
       id: '/login/twitter/callback'
       path: '/callback'
@@ -596,6 +699,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleAdminTranslationsRouteImport
       parentRoute: typeof LocaleAdminRoute
     }
+    '/$locale/admin/roadmap': {
+      id: '/$locale/admin/roadmap'
+      path: '/roadmap'
+      fullPath: '/$locale/admin/roadmap'
+      preLoaderRoute: typeof LocaleAdminRoadmapRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
     '/$locale/admin/recommendations': {
       id: '/$locale/admin/recommendations'
       path: '/recommendations'
@@ -610,11 +720,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleAdminModerationRouteImport
       parentRoute: typeof LocaleAdminRoute
     }
+    '/$locale/admin/feedback': {
+      id: '/$locale/admin/feedback'
+      path: '/feedback'
+      fullPath: '/$locale/admin/feedback'
+      preLoaderRoute: typeof LocaleAdminFeedbackRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
     '/$locale/admin/courses': {
       id: '/$locale/admin/courses'
       path: '/courses'
       fullPath: '/$locale/admin/courses'
       preLoaderRoute: typeof LocaleAdminCoursesRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
+    '/$locale/admin/add-member': {
+      id: '/$locale/admin/add-member'
+      path: '/add-member'
+      fullPath: '/$locale/admin/add-member'
+      preLoaderRoute: typeof LocaleAdminAddMemberRouteImport
       parentRoute: typeof LocaleAdminRoute
     }
     '/$locale/testimonies/$id/': {
@@ -645,23 +769,49 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleEventsIdEditRouteImport
       parentRoute: typeof LocaleEventsRoute
     }
+    '/$locale/admin/users/$id/edit': {
+      id: '/$locale/admin/users/$id/edit'
+      path: '/$id/edit'
+      fullPath: '/$locale/admin/users/$id/edit'
+      preLoaderRoute: typeof LocaleAdminUsersIdEditRouteImport
+      parentRoute: typeof LocaleAdminUsersRoute
+    }
   }
 }
 
+interface LocaleAdminUsersRouteChildren {
+  LocaleAdminUsersIdEditRoute: typeof LocaleAdminUsersIdEditRoute
+}
+
+const LocaleAdminUsersRouteChildren: LocaleAdminUsersRouteChildren = {
+  LocaleAdminUsersIdEditRoute: LocaleAdminUsersIdEditRoute,
+}
+
+const LocaleAdminUsersRouteWithChildren =
+  LocaleAdminUsersRoute._addFileChildren(LocaleAdminUsersRouteChildren)
+
 interface LocaleAdminRouteChildren {
+  LocaleAdminAddMemberRoute: typeof LocaleAdminAddMemberRoute
   LocaleAdminCoursesRoute: typeof LocaleAdminCoursesRoute
+  LocaleAdminFeedbackRoute: typeof LocaleAdminFeedbackRoute
   LocaleAdminModerationRoute: typeof LocaleAdminModerationRoute
   LocaleAdminRecommendationsRoute: typeof LocaleAdminRecommendationsRoute
+  LocaleAdminRoadmapRoute: typeof LocaleAdminRoadmapRoute
   LocaleAdminTranslationsRoute: typeof LocaleAdminTranslationsRoute
-  LocaleAdminUsersRoute: typeof LocaleAdminUsersRoute
+  LocaleAdminUsersRoute: typeof LocaleAdminUsersRouteWithChildren
+  LocaleAdminIndexRoute: typeof LocaleAdminIndexRoute
 }
 
 const LocaleAdminRouteChildren: LocaleAdminRouteChildren = {
+  LocaleAdminAddMemberRoute: LocaleAdminAddMemberRoute,
   LocaleAdminCoursesRoute: LocaleAdminCoursesRoute,
+  LocaleAdminFeedbackRoute: LocaleAdminFeedbackRoute,
   LocaleAdminModerationRoute: LocaleAdminModerationRoute,
   LocaleAdminRecommendationsRoute: LocaleAdminRecommendationsRoute,
+  LocaleAdminRoadmapRoute: LocaleAdminRoadmapRoute,
   LocaleAdminTranslationsRoute: LocaleAdminTranslationsRoute,
-  LocaleAdminUsersRoute: LocaleAdminUsersRoute,
+  LocaleAdminUsersRoute: LocaleAdminUsersRouteWithChildren,
+  LocaleAdminIndexRoute: LocaleAdminIndexRoute,
 }
 
 const LocaleAdminRouteWithChildren = LocaleAdminRoute._addFileChildren(
@@ -708,7 +858,9 @@ interface LocaleRouteChildren {
   LocaleForgotPasswordRoute: typeof LocaleForgotPasswordRoute
   LocaleLoginRoute: typeof LocaleLoginRoute
   LocalePrivacyPolicyRoute: typeof LocalePrivacyPolicyRoute
+  LocaleProfileRoute: typeof LocaleProfileRoute
   LocaleResetPasswordRoute: typeof LocaleResetPasswordRoute
+  LocaleRoadmapRoute: typeof LocaleRoadmapRoute
   LocaleSignupRoute: typeof LocaleSignupRoute
   LocaleTermsOfServiceRoute: typeof LocaleTermsOfServiceRoute
   LocaleTestimoniesRoute: typeof LocaleTestimoniesRouteWithChildren
@@ -724,7 +876,9 @@ const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleForgotPasswordRoute: LocaleForgotPasswordRoute,
   LocaleLoginRoute: LocaleLoginRoute,
   LocalePrivacyPolicyRoute: LocalePrivacyPolicyRoute,
+  LocaleProfileRoute: LocaleProfileRoute,
   LocaleResetPasswordRoute: LocaleResetPasswordRoute,
+  LocaleRoadmapRoute: LocaleRoadmapRoute,
   LocaleSignupRoute: LocaleSignupRoute,
   LocaleTermsOfServiceRoute: LocaleTermsOfServiceRoute,
   LocaleTestimoniesRoute: LocaleTestimoniesRouteWithChildren,

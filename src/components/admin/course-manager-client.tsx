@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { HotmartProduct } from '@/lib/hotmart';
+import type { HotmartProduct } from '@/lib/hotmart';
 import {
     Table,
     TableBody,

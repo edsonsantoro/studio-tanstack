@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { HotmartProduct } from '@/lib/hotmart';
+import type { HotmartProduct } from '@/lib/hotmart';
 
 export function CourseCard({ course }: { course: HotmartProduct }) {
     const formatLabels: Record<string, string> = {

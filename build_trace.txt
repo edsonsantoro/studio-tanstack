@@ -1,0 +1,143 @@
+vite v7.3.1 building client environment for production...
+transforming...
+src/components/roadmap/RoadmapComments.tsx (3:51): "RoadmapCommentWithUser" is not exported by "src/actions/roadmap.ts", imported by "src/components/roadmap/RoadmapComments.tsx".
+src/components/profile/profile-form.tsx (31:18): "UserProfile" is not exported by "src/lib/types.ts", imported by "src/components/profile/profile-form.tsx".
+src/components/ui/sidebar.tsx (5:9): "VariantProps" is not exported by "node_modules/class-variance-authority/dist/index.mjs", imported by "src/components/ui/sidebar.tsx".
+✓ 3174 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/client/assets/interactive-map-C5-Kj3x0.css                  40.95 kB │ gzip:   5.59 kB
+dist/client/assets/globals-B-OFFOMW.css                          77.84 kB │ gzip:  14.22 kB
+dist/client/assets/i18n-3ijvK_jy.js                               0.05 kB │ gzip:   0.06 kB
+dist/client/assets/index-D5Y-8wdp.js                              0.07 kB │ gzip:   0.08 kB
+dist/client/assets/_locale.admin-l4rLPYmd.js                      0.09 kB │ gzip:   0.11 kB
+dist/client/assets/index-DwCkgNbh.js                              0.11 kB │ gzip:   0.12 kB
+dist/client/assets/check-Da5ZngVT.js                              0.13 kB │ gzip:   0.15 kB
+dist/client/assets/chevron-right-CehU9tGF.js                      0.14 kB │ gzip:   0.15 kB
+dist/client/assets/loader-circle-C1cVV8dk.js                      0.16 kB │ gzip:   0.17 kB
+dist/client/assets/plus-rlfP16eL.js                               0.17 kB │ gzip:   0.16 kB
+dist/client/assets/x-3Fo-8GG7.js                                  0.17 kB │ gzip:   0.16 kB
+dist/client/assets/index-DrWOg5tF.js                              0.17 kB │ gzip:   0.16 kB
+dist/client/assets/search-DR0mbkO7.js                             0.18 kB │ gzip:   0.18 kB
+dist/client/assets/message-square-DqPtD-yF.js                     0.19 kB │ gzip:   0.18 kB
+dist/client/assets/clock-Mz_FyQqh.js                              0.19 kB │ gzip:   0.18 kB
+dist/client/assets/circle-plus-BioklrwR.js                        0.21 kB │ gzip:   0.19 kB
+dist/client/assets/circle-x-D0OX1upb.js                           0.21 kB │ gzip:   0.19 kB
+dist/client/assets/index-BaA9BgdS.js                              0.22 kB │ gzip:   0.20 kB
+dist/client/assets/index-BTP0m7Y6.js                              0.23 kB │ gzip:   0.17 kB
+dist/client/assets/copy-Cd2vi7I_.js                               0.24 kB │ gzip:   0.22 kB
+dist/client/assets/globe-DKq5KV10.js                              0.25 kB │ gzip:   0.20 kB
+dist/client/assets/index-B6sl6aDN.js                              0.25 kB │ gzip:   0.22 kB
+dist/client/assets/circle-alert-CJS3UUE9.js                       0.26 kB │ gzip:   0.20 kB
+dist/client/assets/external-link-DegmEcU5.js                      0.26 kB │ gzip:   0.21 kB
+dist/client/assets/map-pin-DY9QwLGU.js                            0.27 kB │ gzip:   0.23 kB
+dist/client/assets/calendar-CezBErCZ.js                           0.27 kB │ gzip:   0.21 kB
+dist/client/assets/password-reset-D3qWi9R9.js                     0.28 kB │ gzip:   0.23 kB
+dist/client/assets/endOfMonth-Dq9Ywn0k.js                         0.31 kB │ gzip:   0.22 kB
+dist/client/assets/users-DNEDKpYq.js                              0.32 kB │ gzip:   0.24 kB
+dist/client/assets/languages-D8TUD6OP.js                          0.33 kB │ gzip:   0.23 kB
+dist/client/assets/square-pen-Csp1iR4G.js                         0.33 kB │ gzip:   0.25 kB
+dist/client/assets/graduation-cap-CxctfH-g.js                     0.34 kB │ gzip:   0.26 kB
+dist/client/assets/trash-2-DSJhVK-i.js                            0.37 kB │ gzip:   0.26 kB
+dist/client/assets/index-cD0fQeLt.js                              0.40 kB │ gzip:   0.31 kB
+dist/client/assets/index-Cf6UHSMT.js                              0.40 kB │ gzip:   0.27 kB
+dist/client/assets/textarea-D3rXPqIV.js                           0.49 kB │ gzip:   0.33 kB
+dist/client/assets/admin-Cgm3AHc5.js                              0.51 kB │ gzip:   0.33 kB
+dist/client/assets/index-BoWAKA_7.js                              0.54 kB │ gzip:   0.35 kB
+dist/client/assets/user-check-CofuT1Zh.js                         0.57 kB │ gzip:   0.37 kB
+dist/client/assets/input-z2qYUrlT.js                              0.58 kB │ gzip:   0.35 kB
+dist/client/assets/badge-DoXJO4qp.js                              0.74 kB │ gzip:   0.39 kB
+dist/client/assets/types-CaOrcLDF.js                              0.84 kB │ gzip:   0.43 kB
+dist/client/assets/createLucideIcon-CEnSwApV.js                   0.89 kB │ gzip:   0.55 kB
+dist/client/assets/_locale.testimonies.create-DWIWN1Kt.js         0.89 kB │ gzip:   0.52 kB
+dist/client/assets/label-Agim7ltE.js                              0.92 kB │ gzip:   0.57 kB
+dist/client/assets/_locale.testimonies._id.edit-DAOVkmtX.js       0.93 kB │ gzip:   0.54 kB
+dist/client/assets/separator-DbHFPwla.js                          1.05 kB │ gzip:   0.60 kB
+dist/client/assets/member-card-BkUsnlVx.js                        1.15 kB │ gzip:   0.63 kB
+dist/client/assets/_locale.privacy-policy-D6v_U-1g.js             1.17 kB │ gzip:   0.57 kB
+dist/client/assets/_locale.terms-of-service-B3pRhBNp.js           1.18 kB │ gzip:   0.57 kB
+dist/client/assets/use-toast-D3v7nnBY.js                          1.22 kB │ gzip:   0.65 kB
+dist/client/assets/location-search-C76Tgg0i.js                    1.42 kB │ gzip:   0.85 kB
+dist/client/assets/table-BBTtDmFm.js                              1.49 kB │ gzip:   0.51 kB
+dist/client/assets/_locale.admin.recommendations-uJ1WeaR9.js      1.73 kB │ gzip:   0.89 kB
+dist/client/assets/index-BiqX4SFz.js                              2.10 kB │ gzip:   0.93 kB
+dist/client/assets/dialog-CNMobyHR.js                             2.19 kB │ gzip:   0.86 kB
+dist/client/assets/_locale.data-deletion-CcY1wy2l.js              2.22 kB │ gzip:   0.83 kB
+dist/client/assets/index.module-BcgQDd7O.js                       2.24 kB │ gzip:   0.95 kB
+dist/client/assets/sheet-qyyEzuo8.js                              2.28 kB │ gzip:   0.91 kB
+dist/client/assets/switch-BLTiBaHt.js                             2.57 kB │ gzip:   1.27 kB
+dist/client/assets/recommendation-card-C37ffnYb.js                2.62 kB │ gzip:   1.09 kB
+dist/client/assets/_locale.admin.roadmap-D0gtdtsZ.js              2.69 kB │ gzip:   1.15 kB
+dist/client/assets/index-BqUgc8vg.js                              2.69 kB │ gzip:   1.22 kB
+dist/client/assets/_locale.forgot-password-DX03rMEn.js            2.70 kB │ gzip:   1.17 kB
+dist/client/assets/_locale.reset-password-CHIVB4a3.js             3.34 kB │ gzip:   1.33 kB
+dist/client/assets/useTranslation-BJ12-w-Y.js                     3.55 kB │ gzip:   1.74 kB
+dist/client/assets/button-C_3zEW8l.js                             3.63 kB │ gzip:   1.64 kB
+dist/client/assets/avatar-C4xa92y8.js                             3.63 kB │ gzip:   1.63 kB
+dist/client/assets/_locale.admin.courses-DweX4BJp.js              3.68 kB │ gzip:   1.69 kB
+dist/client/assets/index-FJ1WRkqq.js                              3.76 kB │ gzip:   1.70 kB
+dist/client/assets/_locale.events-D9Lzb436.js                     3.89 kB │ gzip:   1.61 kB
+dist/client/assets/testimony-form-TxXoqRrf.js                     3.98 kB │ gzip:   1.67 kB
+dist/client/assets/checkbox-DYZi8143.js                           4.01 kB │ gzip:   1.75 kB
+dist/client/assets/_locale.admin.index-Ccc9K83L.js                4.06 kB │ gzip:   1.37 kB
+dist/client/assets/radio-group-BDysc7In.js                        4.14 kB │ gzip:   1.84 kB
+dist/client/assets/_locale.admin.moderation-WIgAS3ac.js           4.24 kB │ gzip:   1.44 kB
+dist/client/assets/index-Bh5ZVgua.js                              4.26 kB │ gzip:   1.89 kB
+dist/client/assets/_locale.admin.feedback-CuwjBUiP.js             4.76 kB │ gzip:   1.77 kB
+dist/client/assets/_locale.login-Dx9uYgZf.js                      4.95 kB │ gzip:   2.23 kB
+dist/client/assets/alert-dialog-DrsyE0hl.js                       4.98 kB │ gzip:   1.84 kB
+dist/client/assets/_locale.testimonies-B2aczbIp.js                5.23 kB │ gzip:   2.15 kB
+dist/client/assets/_locale.admin.users-DzTyKWTJ.js                5.38 kB │ gzip:   2.29 kB
+dist/client/assets/_locale.testimonies._id.index-BxqN4cdk.js      5.56 kB │ gzip:   2.27 kB
+dist/client/assets/pt-BR-BQcKPtKq.js                              5.88 kB │ gzip:   2.10 kB
+dist/client/assets/index-BSDnhyX5.js                              6.63 kB │ gzip:   2.53 kB
+dist/client/assets/popover-CawTy0Tb.js                            6.74 kB │ gzip:   2.49 kB
+dist/client/assets/_locale.index-B1EqZ19l.js                      6.75 kB │ gzip:   2.24 kB
+dist/client/assets/_locale.courses-BaNiyFut.js                    6.86 kB │ gzip:   2.60 kB
+dist/client/assets/_locale.admin.add-member-Czts8u0Q.js           7.10 kB │ gzip:   2.42 kB
+dist/client/assets/en-US-C5LaznV8.js                              7.67 kB │ gzip:   2.74 kB
+dist/client/assets/tooltip-p5sshXQH.js                            8.21 kB │ gzip:   3.06 kB
+dist/client/assets/_locale.admin.users._id.edit-C678D5ZV.js       8.84 kB │ gzip:   2.80 kB
+dist/client/assets/_locale.events.create-Dlvo4A1s.js              8.91 kB │ gzip:   3.16 kB
+dist/client/assets/_locale.signup-DjEUhGEU.js                     9.30 kB │ gzip:   3.44 kB
+dist/client/assets/_locale.admin.translations-CHLv2mLA.js         9.91 kB │ gzip:   3.65 kB
+dist/client/assets/_locale.events._id.edit-cKg53QIC.js           10.08 kB │ gzip:   3.50 kB
+dist/client/assets/_locale-DkB3q-P0.js                           10.73 kB │ gzip:   2.91 kB
+dist/client/assets/format-DKfJXkJP.js                            12.19 kB │ gzip:   3.28 kB
+dist/client/assets/_locale.events._id.index-DdsmGdZ5.js          13.02 kB │ gzip:   4.26 kB
+dist/client/assets/_locale.roadmap-D17XnPlN.js                   14.90 kB │ gzip:   5.04 kB
+dist/client/assets/Combination-BQPDkAxT.js                       20.50 kB │ gzip:   7.41 kB
+dist/client/assets/dropdown-menu-BF3GsujK.js                     22.06 kB │ gzip:   6.57 kB
+dist/client/assets/select-C58Fjpx3.js                            22.58 kB │ gzip:   7.91 kB
+dist/client/assets/index-WWVClsHc.js                             27.04 kB │ gzip:  10.43 kB
+dist/client/assets/form-CLoNAO4r.js                              32.13 kB │ gzip:  11.55 kB
+dist/client/assets/_locale.dashboard-7nmBEzB2.js                 35.14 kB │ gzip:  11.09 kB
+dist/client/assets/_locale.profile-BzG3F2Hr.js                   48.66 kB │ gzip:  17.45 kB
+dist/client/assets/calendar-DRRjhwOw.js                          50.33 kB │ gzip:  15.70 kB
+dist/client/assets/main-Bm19KMZg.js                             858.10 kB │ gzip: 263.61 kB
+dist/client/assets/interactive-map-CoL7y6oj.js                1,718.23 kB │ gzip: 475.42 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 10.77s
+vite v7.3.1 building ssr environment for production...
+transforming...
+✓ 242 modules transformed.
+✗ Build failed in 2.17s
+error during build:
+[vite]: Rollup failed to resolve import "vinxi/http" from "/home/trader/projects/studio-tanstack/src/actions/profile.ts?tss-serverfn-split".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rollupOptions.external`
+    at viteLog (file:///home/trader/projects/studio-tanstack/node_modules/vite/dist/node/chunks/config.js:33635:57)
+    at file:///home/trader/projects/studio-tanstack/node_modules/vite/dist/node/chunks/config.js:33669:73
+    at onwarn (file:///home/trader/projects/studio-tanstack/node_modules/@vitejs/plugin-react/dist/index.js:90:7)
+    at file:///home/trader/projects/studio-tanstack/node_modules/vite/dist/node/chunks/config.js:33669:28
+    at onRollupLog (file:///home/trader/projects/studio-tanstack/node_modules/vite/dist/node/chunks/config.js:33664:63)
+    at onLog (file:///home/trader/projects/studio-tanstack/node_modules/vite/dist/node/chunks/config.js:33467:4)
+    at file:///home/trader/projects/studio-tanstack/node_modules/rollup/dist/es/shared/node-entry.js:20981:32
+    at Object.logger [as onLog] (file:///home/trader/projects/studio-tanstack/node_modules/rollup/dist/es/shared/node-entry.js:22968:9)
+    at ModuleLoader.handleInvalidResolvedId (file:///home/trader/projects/studio-tanstack/node_modules/rollup/dist/es/shared/node-entry.js:21712:26)
+    at file:///home/trader/projects/studio-tanstack/node_modules/rollup/dist/es/shared/node-entry.js:21670:26

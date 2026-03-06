@@ -1,8 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { getTranslationsForAdmin } from '@/actions/translations'
-import { lazy, Suspense } from 'react';
-const TranslationsClient = lazy(() => import('@/components/admin/translations-client').then(m => ({ default: m.TranslationsClient })));
-// /components/admin/translations-client'
+import { TranslationsClient } from '@/components/admin/translations-client'
 import { locales } from '@/i18n'
 import i18n from '@/lib/i18n'
 import * as React from 'react'
@@ -28,11 +26,11 @@ function AdminTranslationsPage() {
           {t('translations_page_desc')}
         </p>
       </div>
-      <Suspense fallback={<div>Loading...</div>}><TranslationsClient
+      <TranslationsClient
         initialTranslations={translations}
         locales={locales}
         baseLocale="pt"
-       /> </Suspense>
+      />
     </div>
   )
 }

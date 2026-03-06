@@ -1,6 +1,6 @@
 'use client';
 
-import { RoadmapItemWithVotes, voteOnItem } from '@/actions/roadmap';
+import type { RoadmapItemWithVotes, voteOnItem } from '@/actions/roadmap';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
