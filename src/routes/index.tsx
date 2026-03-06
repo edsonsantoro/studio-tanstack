@@ -1,14 +1,11 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import * as React from 'react'
+import { createFileRoute, redirect } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
-  component: IndexComponent,
+  beforeLoad: () => {
+    throw redirect({
+      to: '/$locale',
+      params: { locale: 'pt' } as any,
+      search: { debug: undefined } as any,
+    })
+  },
 })
-
-function IndexComponent() {
-  const navigate = useNavigate()
-  React.useEffect(() => {
-    navigate({ to: '/$locale', params: { locale: 'pt' }, replace: true })
-  }, [navigate])
-  return <div>Redirecting...</div>
-}
