@@ -23,6 +23,8 @@ import { Route as LoginTwitterCallbackRouteImport } from './routes/login.twitter
 import { Route as LoginGoogleCallbackRouteImport } from './routes/login.google.callback'
 import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebook.callback'
 import { Route as LocaleAdminUsersRouteImport } from './routes/$locale.admin.users'
+import { Route as LocaleAdminModerationRouteImport } from './routes/$locale.admin.moderation'
+import { Route as LocaleAdminCoursesRouteImport } from './routes/$locale.admin.courses'
 
 const LocaleRoute = LocaleRouteImport.update({
   id: '/$locale',
@@ -94,6 +96,16 @@ const LocaleAdminUsersRoute = LocaleAdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => LocaleAdminRoute,
 } as any)
+const LocaleAdminModerationRoute = LocaleAdminModerationRouteImport.update({
+  id: '/moderation',
+  path: '/moderation',
+  getParentRoute: () => LocaleAdminRoute,
+} as any)
+const LocaleAdminCoursesRoute = LocaleAdminCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => LocaleAdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -106,6 +118,8 @@ export interface FileRoutesByFullPath {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
@@ -121,6 +135,8 @@ export interface FileRoutesByTo {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale': typeof LocaleIndexRoute
+  '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
@@ -138,6 +154,8 @@ export interface FileRoutesById {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
   '/login/google/callback': typeof LoginGoogleCallbackRoute
@@ -156,6 +174,8 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale/'
+    | '/$locale/admin/courses'
+    | '/$locale/admin/moderation'
     | '/$locale/admin/users'
     | '/login/facebook/callback'
     | '/login/google/callback'
@@ -171,6 +191,8 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale'
+    | '/$locale/admin/courses'
+    | '/$locale/admin/moderation'
     | '/$locale/admin/users'
     | '/login/facebook/callback'
     | '/login/google/callback'
@@ -187,6 +209,8 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale/'
+    | '/$locale/admin/courses'
+    | '/$locale/admin/moderation'
     | '/$locale/admin/users'
     | '/login/facebook/callback'
     | '/login/google/callback'
@@ -301,14 +325,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleAdminUsersRouteImport
       parentRoute: typeof LocaleAdminRoute
     }
+    '/$locale/admin/moderation': {
+      id: '/$locale/admin/moderation'
+      path: '/moderation'
+      fullPath: '/$locale/admin/moderation'
+      preLoaderRoute: typeof LocaleAdminModerationRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
+    '/$locale/admin/courses': {
+      id: '/$locale/admin/courses'
+      path: '/courses'
+      fullPath: '/$locale/admin/courses'
+      preLoaderRoute: typeof LocaleAdminCoursesRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
   }
 }
 
 interface LocaleAdminRouteChildren {
+  LocaleAdminCoursesRoute: typeof LocaleAdminCoursesRoute
+  LocaleAdminModerationRoute: typeof LocaleAdminModerationRoute
   LocaleAdminUsersRoute: typeof LocaleAdminUsersRoute
 }
 
 const LocaleAdminRouteChildren: LocaleAdminRouteChildren = {
+  LocaleAdminCoursesRoute: LocaleAdminCoursesRoute,
+  LocaleAdminModerationRoute: LocaleAdminModerationRoute,
   LocaleAdminUsersRoute: LocaleAdminUsersRoute,
 }
 
