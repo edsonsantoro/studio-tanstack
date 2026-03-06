@@ -33,6 +33,7 @@ import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebo
 import { Route as LocaleTestimoniesCreateRouteImport } from './routes/$locale.testimonies.create'
 import { Route as LocaleEventsCreateRouteImport } from './routes/$locale.events.create'
 import { Route as LocaleAdminUsersRouteImport } from './routes/$locale.admin.users'
+import { Route as LocaleAdminRecommendationsRouteImport } from './routes/$locale.admin.recommendations'
 import { Route as LocaleAdminModerationRouteImport } from './routes/$locale.admin.moderation'
 import { Route as LocaleAdminCoursesRouteImport } from './routes/$locale.admin.courses'
 import { Route as LocaleTestimoniesIdIndexRouteImport } from './routes/$locale.testimonies.$id.index'
@@ -160,6 +161,12 @@ const LocaleAdminUsersRoute = LocaleAdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => LocaleAdminRoute,
 } as any)
+const LocaleAdminRecommendationsRoute =
+  LocaleAdminRecommendationsRouteImport.update({
+    id: '/recommendations',
+    path: '/recommendations',
+    getParentRoute: () => LocaleAdminRoute,
+  } as any)
 const LocaleAdminModerationRoute = LocaleAdminModerationRouteImport.update({
   id: '/moderation',
   path: '/moderation',
@@ -213,6 +220,7 @@ export interface FileRoutesByFullPath {
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
+  '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
@@ -244,6 +252,7 @@ export interface FileRoutesByTo {
   '/$locale': typeof LocaleIndexRoute
   '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
+  '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
@@ -277,6 +286,7 @@ export interface FileRoutesById {
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
+  '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
@@ -311,6 +321,7 @@ export interface FileRouteTypes {
     | '/$locale/'
     | '/$locale/admin/courses'
     | '/$locale/admin/moderation'
+    | '/$locale/admin/recommendations'
     | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
@@ -342,6 +353,7 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/admin/courses'
     | '/$locale/admin/moderation'
+    | '/$locale/admin/recommendations'
     | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
@@ -374,6 +386,7 @@ export interface FileRouteTypes {
     | '/$locale/'
     | '/$locale/admin/courses'
     | '/$locale/admin/moderation'
+    | '/$locale/admin/recommendations'
     | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
@@ -564,6 +577,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleAdminUsersRouteImport
       parentRoute: typeof LocaleAdminRoute
     }
+    '/$locale/admin/recommendations': {
+      id: '/$locale/admin/recommendations'
+      path: '/recommendations'
+      fullPath: '/$locale/admin/recommendations'
+      preLoaderRoute: typeof LocaleAdminRecommendationsRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
     '/$locale/admin/moderation': {
       id: '/$locale/admin/moderation'
       path: '/moderation'
@@ -612,12 +632,14 @@ declare module '@tanstack/react-router' {
 interface LocaleAdminRouteChildren {
   LocaleAdminCoursesRoute: typeof LocaleAdminCoursesRoute
   LocaleAdminModerationRoute: typeof LocaleAdminModerationRoute
+  LocaleAdminRecommendationsRoute: typeof LocaleAdminRecommendationsRoute
   LocaleAdminUsersRoute: typeof LocaleAdminUsersRoute
 }
 
 const LocaleAdminRouteChildren: LocaleAdminRouteChildren = {
   LocaleAdminCoursesRoute: LocaleAdminCoursesRoute,
   LocaleAdminModerationRoute: LocaleAdminModerationRoute,
+  LocaleAdminRecommendationsRoute: LocaleAdminRecommendationsRoute,
   LocaleAdminUsersRoute: LocaleAdminUsersRoute,
 }
 
