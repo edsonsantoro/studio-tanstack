@@ -24,6 +24,7 @@ import { Route as LocaleLoginRouteImport } from './routes/$locale.login'
 import { Route as LocaleForgotPasswordRouteImport } from './routes/$locale.forgot-password'
 import { Route as LocaleEventsRouteImport } from './routes/$locale.events'
 import { Route as LocaleDataDeletionRouteImport } from './routes/$locale.data-deletion'
+import { Route as LocaleDashboardRouteImport } from './routes/$locale.dashboard'
 import { Route as LocaleCoursesRouteImport } from './routes/$locale.courses'
 import { Route as LoginTwitterCallbackRouteImport } from './routes/login.twitter.callback'
 import { Route as LoginGoogleCallbackRouteImport } from './routes/login.google.callback'
@@ -110,6 +111,11 @@ const LocaleDataDeletionRoute = LocaleDataDeletionRouteImport.update({
   path: '/data-deletion',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocaleDashboardRoute = LocaleDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LocaleCoursesRoute = LocaleCoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
@@ -166,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/courses': typeof LocaleCoursesRoute
+  '/$locale/dashboard': typeof LocaleDashboardRoute
   '/$locale/data-deletion': typeof LocaleDataDeletionRoute
   '/$locale/events': typeof LocaleEventsRouteWithChildren
   '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
@@ -192,6 +199,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$locale/courses': typeof LocaleCoursesRoute
+  '/$locale/dashboard': typeof LocaleDashboardRoute
   '/$locale/data-deletion': typeof LocaleDataDeletionRoute
   '/$locale/events': typeof LocaleEventsRouteWithChildren
   '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
@@ -220,6 +228,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/courses': typeof LocaleCoursesRoute
+  '/$locale/dashboard': typeof LocaleDashboardRoute
   '/$locale/data-deletion': typeof LocaleDataDeletionRoute
   '/$locale/events': typeof LocaleEventsRouteWithChildren
   '/$locale/forgot-password': typeof LocaleForgotPasswordRoute
@@ -249,6 +258,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$locale'
     | '/$locale/courses'
+    | '/$locale/dashboard'
     | '/$locale/data-deletion'
     | '/$locale/events'
     | '/$locale/forgot-password'
@@ -275,6 +285,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$locale/courses'
+    | '/$locale/dashboard'
     | '/$locale/data-deletion'
     | '/$locale/events'
     | '/$locale/forgot-password'
@@ -302,6 +313,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$locale'
     | '/$locale/courses'
+    | '/$locale/dashboard'
     | '/$locale/data-deletion'
     | '/$locale/events'
     | '/$locale/forgot-password'
@@ -441,6 +453,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleDataDeletionRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/dashboard': {
+      id: '/$locale/dashboard'
+      path: '/dashboard'
+      fullPath: '/$locale/dashboard'
+      preLoaderRoute: typeof LocaleDashboardRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/courses': {
       id: '/$locale/courses'
       path: '/courses'
@@ -547,6 +566,7 @@ const LocaleTestimoniesRouteWithChildren =
 
 interface LocaleRouteChildren {
   LocaleCoursesRoute: typeof LocaleCoursesRoute
+  LocaleDashboardRoute: typeof LocaleDashboardRoute
   LocaleDataDeletionRoute: typeof LocaleDataDeletionRoute
   LocaleEventsRoute: typeof LocaleEventsRouteWithChildren
   LocaleForgotPasswordRoute: typeof LocaleForgotPasswordRoute
@@ -561,6 +581,7 @@ interface LocaleRouteChildren {
 
 const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleCoursesRoute: LocaleCoursesRoute,
+  LocaleDashboardRoute: LocaleDashboardRoute,
   LocaleDataDeletionRoute: LocaleDataDeletionRoute,
   LocaleEventsRoute: LocaleEventsRouteWithChildren,
   LocaleForgotPasswordRoute: LocaleForgotPasswordRoute,
