@@ -5,7 +5,7 @@ import { getUser } from '@/lib/auth';
 import { locales } from '@/i18n';
 import fs from 'fs/promises';
 import path from 'path';
-import { translateText } from '@/ai/flows/translate-text';
+ // /ai/flows/translate-text';
 import { createServerFn } from "@tanstack/react-start";
 
 async function updateLocalesArray(update: (locales: string[]) => string[]) {
