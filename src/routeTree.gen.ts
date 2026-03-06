@@ -27,6 +27,7 @@ import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebo
 import { Route as LocaleTestimoniesCreateRouteImport } from './routes/$locale.testimonies.create'
 import { Route as LocaleEventsCreateRouteImport } from './routes/$locale.events.create'
 import { Route as LocaleAdminUsersRouteImport } from './routes/$locale.admin.users'
+import { Route as LocaleAdminTranslationsRouteImport } from './routes/$locale.admin.translations'
 import { Route as LocaleAdminRecommendationsRouteImport } from './routes/$locale.admin.recommendations'
 import { Route as LocaleAdminModerationRouteImport } from './routes/$locale.admin.moderation'
 import { Route as LocaleAdminFeedbackRouteImport } from './routes/$locale.admin.feedback'
@@ -126,6 +127,11 @@ const LocaleAdminUsersRoute = LocaleAdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => LocaleAdminRoute,
 } as any)
+const LocaleAdminTranslationsRoute = LocaleAdminTranslationsRouteImport.update({
+  id: '/translations',
+  path: '/translations',
+  getParentRoute: () => LocaleAdminRoute,
+} as any)
 const LocaleAdminRecommendationsRoute =
   LocaleAdminRecommendationsRouteImport.update({
     id: '/recommendations',
@@ -186,6 +192,7 @@ export interface FileRoutesByFullPath {
   '/$locale/admin/feedback': typeof LocaleAdminFeedbackRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
+  '/$locale/admin/translations': typeof LocaleAdminTranslationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
@@ -213,6 +220,7 @@ export interface FileRoutesByTo {
   '/$locale/admin/feedback': typeof LocaleAdminFeedbackRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
+  '/$locale/admin/translations': typeof LocaleAdminTranslationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
@@ -242,6 +250,7 @@ export interface FileRoutesById {
   '/$locale/admin/feedback': typeof LocaleAdminFeedbackRoute
   '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/recommendations': typeof LocaleAdminRecommendationsRoute
+  '/$locale/admin/translations': typeof LocaleAdminTranslationsRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
@@ -272,6 +281,7 @@ export interface FileRouteTypes {
     | '/$locale/admin/feedback'
     | '/$locale/admin/moderation'
     | '/$locale/admin/recommendations'
+    | '/$locale/admin/translations'
     | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
@@ -299,6 +309,7 @@ export interface FileRouteTypes {
     | '/$locale/admin/feedback'
     | '/$locale/admin/moderation'
     | '/$locale/admin/recommendations'
+    | '/$locale/admin/translations'
     | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
@@ -327,6 +338,7 @@ export interface FileRouteTypes {
     | '/$locale/admin/feedback'
     | '/$locale/admin/moderation'
     | '/$locale/admin/recommendations'
+    | '/$locale/admin/translations'
     | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
@@ -475,6 +487,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleAdminUsersRouteImport
       parentRoute: typeof LocaleAdminRoute
     }
+    '/$locale/admin/translations': {
+      id: '/$locale/admin/translations'
+      path: '/translations'
+      fullPath: '/$locale/admin/translations'
+      preLoaderRoute: typeof LocaleAdminTranslationsRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
     '/$locale/admin/recommendations': {
       id: '/$locale/admin/recommendations'
       path: '/recommendations'
@@ -539,6 +558,7 @@ interface LocaleAdminRouteChildren {
   LocaleAdminFeedbackRoute: typeof LocaleAdminFeedbackRoute
   LocaleAdminModerationRoute: typeof LocaleAdminModerationRoute
   LocaleAdminRecommendationsRoute: typeof LocaleAdminRecommendationsRoute
+  LocaleAdminTranslationsRoute: typeof LocaleAdminTranslationsRoute
   LocaleAdminUsersRoute: typeof LocaleAdminUsersRoute
 }
 
@@ -547,6 +567,7 @@ const LocaleAdminRouteChildren: LocaleAdminRouteChildren = {
   LocaleAdminFeedbackRoute: LocaleAdminFeedbackRoute,
   LocaleAdminModerationRoute: LocaleAdminModerationRoute,
   LocaleAdminRecommendationsRoute: LocaleAdminRecommendationsRoute,
+  LocaleAdminTranslationsRoute: LocaleAdminTranslationsRoute,
   LocaleAdminUsersRoute: LocaleAdminUsersRoute,
 }
 
