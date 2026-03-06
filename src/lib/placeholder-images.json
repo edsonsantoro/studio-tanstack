@@ -1,0 +1,198 @@
+{
+  "placeholderImages": [
+    {
+      "id": "user1",
+      "description": "User 1 avatar - female",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHBvcnRyYWl0fGVufDF8MXx8fDE3NzA2NDU1OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "female"
+    },
+    {
+      "id": "user2",
+      "description": "User 2 avatar - female",
+      "imageUrl": "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHwyfHx3b21hbiUyMHBvcnRyYWl0fGVufDF8MXx8fDE3NzA2NDU1OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "female"
+    },
+    {
+      "id": "user3",
+      "description": "User 3 avatar - female",
+      "imageUrl": "https://images.unsplash.com/photo-1592621385612-4d7129426394?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHwzfHx3b21hbiUyMHBvcnRyYWl0fGVufDF8MXx8fDE3NzA2NDU1OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "female"
+    },
+    {
+      "id": "user4",
+      "description": "User 4 avatar - female",
+      "imageUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw0fHx3b21hbiUyMHBvcnRyYWl0fGVufDF8MXx8fDE3NzA2NDU1OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "female"
+    },
+    {
+      "id": "user5",
+      "description": "User 5 avatar - female",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw1fHx3b21hbiUyMHBvcnRyYWl0fGVufDF8MXx8fDE3NzA2NDU1OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "female"
+    },
+    {
+      "id": "user6",
+      "description": "User 6 avatar - female",
+      "imageUrl": "https://images.unsplash.com/photo-1609505848912-b7c3b8b4beda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHBvcnRyYWl0fGVufDF8MXx8fDE3NzA2NDU1OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "female"
+    },
+    {
+      "id": "user7",
+      "description": "User 7 avatar - female",
+      "imageUrl": "https://images.unsplash.com/photo-1546961329-78bef0414d7c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw3fHx3b21hbiUyMHBvcnRyYWl0fGVufDF8MXx8fDE3NzA2NDU1OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "female"
+    },
+    {
+      "id": "user8",
+      "description": "User 8 avatar - female",
+      "imageUrl": "https://images.unsplash.com/photo-1581403341630-a6e0b9d2d257?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw4fHx3b21hbiUyMHBvcnRyYWl0fGVufDF8MXx8fDE3NzA2NDU1OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "female"
+    },
+    {
+      "id": "user9",
+      "description": "User 9 avatar - female",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw5fHx3b21hbiUyMHBvcnRyYWl0fGVufDF8MXx8fDE3NzA2NDU1OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "female"
+    },
+    {
+      "id": "user10",
+      "description": "User 10 avatar - female",
+      "imageUrl": "https://images.unsplash.com/photo-1557053908-4793c484d06f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHwxMHx8d29tYW4lMjBwb3J0cmFpdHxlbnwxfDF8fHwxNzcwNjQ1NTkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "female"
+    },
+    {
+      "id": "user11",
+      "description": "User 11 avatar - male",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHwxfHxtYW4lMjBwb3J0cmFpdHxlbnwxfDF8fHwxNzcwNjQ1NTk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "male"
+    },
+    {
+      "id": "user12",
+      "description": "User 12 avatar - male",
+      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHwyfHxtYW4lMjBwb3J0cmFpdHxlbnwxfDF8fHwxNzcwNjQ1NTk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "male"
+    },
+    {
+      "id": "user13",
+      "description": "User 13 avatar - male",
+      "imageUrl": "https://images.unsplash.com/photo-1522556189639-b150ed9c4330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHwzfHxtYW4lMjBwb3J0cmFpdHxlbnwxfDF8fHwxNzcwNjQ1NTk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "male"
+    },
+    {
+      "id": "user14",
+      "description": "User 14 avatar - male",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw0fHxtYW4lMjBwb3J0cmFpdHxlbnwxfDF8fHwxNzcwNjQ1NTk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "male"
+    },
+    {
+      "id": "user15",
+      "description": "User 15 avatar - male",
+      "imageUrl": "https://images.unsplash.com/photo-1607031542107-f6f46b5d54e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw1fHxtYW4lMjBwb3J0cmFpdHxlbnwxfDF8fHwxNzcwNjQ1NTk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "male"
+    },
+    {
+      "id": "user16",
+      "description": "User 16 avatar - male",
+      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw2fHxtYW4lMjBwb3J0cmFpdHxlbnwxfDF8fHwxNzcwNjQ1NTk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "male"
+    },
+    {
+      "id": "user17",
+      "description": "User 17 avatar - male",
+      "imageUrl": "https://images.unsplash.com/photo-1636377985931-898218afd306?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwxfDF8fHwxNzcwNjQ1NTk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "male"
+    },
+    {
+      "id": "user18",
+      "description": "User 18 avatar - male",
+      "imageUrl": "https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw4fHxtYW4lMjBwb3J0cmFpdHxlbnwxfDF8fHwxNzcwNjQ1NTk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "male"
+    },
+    {
+      "id": "user19",
+      "description": "User 19 avatar - male",
+      "imageUrl": "https://images.unsplash.com/photo-1587397845856-e6cf49176c70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHw5fHxtYW4lMjBwb3J0cmFpdHxlbnwxfDF8fHwxNzcwNjQ1NTk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "male"
+    },
+    {
+      "id": "user20",
+      "description": "User 20 avatar - male",
+      "imageUrl": "https://images.unsplash.com/photo-1600968566723-9fcdf6fca8d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NzEyNTh8MHwxfHNlYXJjaHwxMHx8bWFuJTIwcG9ydHJhaXR8ZW58MXwxfHx8MTc3MDY0NTU5NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "avatar portrait",
+      "gender": "male"
+    },
+    {
+      "id": "map-background",
+      "description": "A stylized world map background.",
+      "imageUrl": "https://images.unsplash.com/photo-1706823871410-ed8b01faef7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b3JsZCUyMG1hcHxlbnwwfHx8fDE3Njg1NTExMDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "world map"
+    },
+    {
+      "id": "cyberchurch-hero",
+      "description": "People holding hands in a circle",
+      "imageUrl": "https://images.unsplash.com/photo-1584449083396-e1d54d5e7a46?q=80&w=1974&auto=format&fit=crop",
+      "imageHint": "community connection"
+    },
+    {
+      "id": "cyberchurch-group",
+      "description": "People studying together in a room",
+      "imageUrl": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "people studying"
+    },
+    {
+      "id": "event-placeholder",
+      "description": "Placeholder for event cover images",
+      "imageUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb21tdW5pdHklMjBldmVudHxlbnwwfHx8fDE3Njg1ODE2ODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "community event"
+    },
+    {
+      "id": "courses-hero",
+      "description": "Person studying a book with a bright light.",
+      "imageUrl": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=2128&auto=format&fit=crop",
+      "imageHint": "person studying"
+    },
+    {
+      "id": "course-maturity",
+      "description": "An old, wise tree.",
+      "imageUrl": "https://images.unsplash.com/photo-1444492417251-9f123a3e1d53?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "old tree"
+    },
+    {
+      "id": "course-foundations",
+      "description": "Stone foundations of a building.",
+      "imageUrl": "https://images.unsplash.com/photo-1579264539137-521b3d5bde68?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "stone foundation"
+    },
+    {
+      "id": "course-marriage",
+      "description": "An elderly couple holding hands.",
+      "imageUrl": "https://images.unsplash.com/photo-1616190419424-de7b9a52862c?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "couple hands"
+    },
+    {
+      "id": "course-subscription",
+      "description": "A library of books.",
+      "imageUrl": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "library books"
+    }
+  ]
+}
