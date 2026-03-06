@@ -18,6 +18,7 @@ import { Route as LoginFacebookRouteImport } from './routes/login.facebook'
 import { Route as LocaleTestimoniesRouteImport } from './routes/$locale.testimonies'
 import { Route as LocaleRoadmapRouteImport } from './routes/$locale.roadmap'
 import { Route as LocaleProfileRouteImport } from './routes/$locale.profile'
+import { Route as LocaleLoginRouteImport } from './routes/$locale.login'
 import { Route as LocaleEventsRouteImport } from './routes/$locale.events'
 import { Route as LocaleDashboardRouteImport } from './routes/$locale.dashboard'
 import { Route as LocaleAdminRouteImport } from './routes/$locale.admin'
@@ -80,6 +81,11 @@ const LocaleRoadmapRoute = LocaleRoadmapRouteImport.update({
 const LocaleProfileRoute = LocaleProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LocaleLoginRoute = LocaleLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => LocaleRoute,
 } as any)
 const LocaleEventsRoute = LocaleEventsRouteImport.update({
@@ -181,6 +187,7 @@ export interface FileRoutesByFullPath {
   '/$locale/admin': typeof LocaleAdminRouteWithChildren
   '/$locale/dashboard': typeof LocaleDashboardRoute
   '/$locale/events': typeof LocaleEventsRouteWithChildren
+  '/$locale/login': typeof LocaleLoginRoute
   '/$locale/profile': typeof LocaleProfileRoute
   '/$locale/roadmap': typeof LocaleRoadmapRoute
   '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
@@ -209,6 +216,7 @@ export interface FileRoutesByTo {
   '/$locale/admin': typeof LocaleAdminRouteWithChildren
   '/$locale/dashboard': typeof LocaleDashboardRoute
   '/$locale/events': typeof LocaleEventsRouteWithChildren
+  '/$locale/login': typeof LocaleLoginRoute
   '/$locale/profile': typeof LocaleProfileRoute
   '/$locale/roadmap': typeof LocaleRoadmapRoute
   '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
@@ -239,6 +247,7 @@ export interface FileRoutesById {
   '/$locale/admin': typeof LocaleAdminRouteWithChildren
   '/$locale/dashboard': typeof LocaleDashboardRoute
   '/$locale/events': typeof LocaleEventsRouteWithChildren
+  '/$locale/login': typeof LocaleLoginRoute
   '/$locale/profile': typeof LocaleProfileRoute
   '/$locale/roadmap': typeof LocaleRoadmapRoute
   '/$locale/testimonies': typeof LocaleTestimoniesRouteWithChildren
@@ -270,6 +279,7 @@ export interface FileRouteTypes {
     | '/$locale/admin'
     | '/$locale/dashboard'
     | '/$locale/events'
+    | '/$locale/login'
     | '/$locale/profile'
     | '/$locale/roadmap'
     | '/$locale/testimonies'
@@ -298,6 +308,7 @@ export interface FileRouteTypes {
     | '/$locale/admin'
     | '/$locale/dashboard'
     | '/$locale/events'
+    | '/$locale/login'
     | '/$locale/profile'
     | '/$locale/roadmap'
     | '/$locale/testimonies'
@@ -327,6 +338,7 @@ export interface FileRouteTypes {
     | '/$locale/admin'
     | '/$locale/dashboard'
     | '/$locale/events'
+    | '/$locale/login'
     | '/$locale/profile'
     | '/$locale/roadmap'
     | '/$locale/testimonies'
@@ -422,6 +434,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/$locale/profile'
       preLoaderRoute: typeof LocaleProfileRouteImport
+      parentRoute: typeof LocaleRoute
+    }
+    '/$locale/login': {
+      id: '/$locale/login'
+      path: '/login'
+      fullPath: '/$locale/login'
+      preLoaderRoute: typeof LocaleLoginRouteImport
       parentRoute: typeof LocaleRoute
     }
     '/$locale/events': {
@@ -610,6 +629,7 @@ interface LocaleRouteChildren {
   LocaleAdminRoute: typeof LocaleAdminRouteWithChildren
   LocaleDashboardRoute: typeof LocaleDashboardRoute
   LocaleEventsRoute: typeof LocaleEventsRouteWithChildren
+  LocaleLoginRoute: typeof LocaleLoginRoute
   LocaleProfileRoute: typeof LocaleProfileRoute
   LocaleRoadmapRoute: typeof LocaleRoadmapRoute
   LocaleTestimoniesRoute: typeof LocaleTestimoniesRouteWithChildren
@@ -620,6 +640,7 @@ const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleAdminRoute: LocaleAdminRouteWithChildren,
   LocaleDashboardRoute: LocaleDashboardRoute,
   LocaleEventsRoute: LocaleEventsRouteWithChildren,
+  LocaleLoginRoute: LocaleLoginRoute,
   LocaleProfileRoute: LocaleProfileRoute,
   LocaleRoadmapRoute: LocaleRoadmapRoute,
   LocaleTestimoniesRoute: LocaleTestimoniesRouteWithChildren,
@@ -675,12 +696,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
