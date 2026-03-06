@@ -33,6 +33,8 @@ import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebo
 import { Route as LocaleTestimoniesCreateRouteImport } from './routes/$locale.testimonies.create'
 import { Route as LocaleEventsCreateRouteImport } from './routes/$locale.events.create'
 import { Route as LocaleAdminUsersRouteImport } from './routes/$locale.admin.users'
+import { Route as LocaleAdminModerationRouteImport } from './routes/$locale.admin.moderation'
+import { Route as LocaleAdminCoursesRouteImport } from './routes/$locale.admin.courses'
 import { Route as LocaleTestimoniesIdIndexRouteImport } from './routes/$locale.testimonies.$id.index'
 import { Route as LocaleEventsIdIndexRouteImport } from './routes/$locale.events.$id.index'
 import { Route as LocaleTestimoniesIdEditRouteImport } from './routes/$locale.testimonies.$id.edit'
@@ -158,6 +160,16 @@ const LocaleAdminUsersRoute = LocaleAdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => LocaleAdminRoute,
 } as any)
+const LocaleAdminModerationRoute = LocaleAdminModerationRouteImport.update({
+  id: '/moderation',
+  path: '/moderation',
+  getParentRoute: () => LocaleAdminRoute,
+} as any)
+const LocaleAdminCoursesRoute = LocaleAdminCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => LocaleAdminRoute,
+} as any)
 const LocaleTestimoniesIdIndexRoute =
   LocaleTestimoniesIdIndexRouteImport.update({
     id: '/$id/',
@@ -199,6 +211,8 @@ export interface FileRoutesByFullPath {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
@@ -228,6 +242,8 @@ export interface FileRoutesByTo {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale': typeof LocaleIndexRoute
+  '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
@@ -259,6 +275,8 @@ export interface FileRoutesById {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/admin/courses': typeof LocaleAdminCoursesRoute
+  '/$locale/admin/moderation': typeof LocaleAdminModerationRoute
   '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
@@ -291,6 +309,8 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale/'
+    | '/$locale/admin/courses'
+    | '/$locale/admin/moderation'
     | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
@@ -320,6 +340,8 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale'
+    | '/$locale/admin/courses'
+    | '/$locale/admin/moderation'
     | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
@@ -350,6 +372,8 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale/'
+    | '/$locale/admin/courses'
+    | '/$locale/admin/moderation'
     | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
@@ -540,6 +564,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleAdminUsersRouteImport
       parentRoute: typeof LocaleAdminRoute
     }
+    '/$locale/admin/moderation': {
+      id: '/$locale/admin/moderation'
+      path: '/moderation'
+      fullPath: '/$locale/admin/moderation'
+      preLoaderRoute: typeof LocaleAdminModerationRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
+    '/$locale/admin/courses': {
+      id: '/$locale/admin/courses'
+      path: '/courses'
+      fullPath: '/$locale/admin/courses'
+      preLoaderRoute: typeof LocaleAdminCoursesRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
     '/$locale/testimonies/$id/': {
       id: '/$locale/testimonies/$id/'
       path: '/$id'
@@ -572,10 +610,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface LocaleAdminRouteChildren {
+  LocaleAdminCoursesRoute: typeof LocaleAdminCoursesRoute
+  LocaleAdminModerationRoute: typeof LocaleAdminModerationRoute
   LocaleAdminUsersRoute: typeof LocaleAdminUsersRoute
 }
 
 const LocaleAdminRouteChildren: LocaleAdminRouteChildren = {
+  LocaleAdminCoursesRoute: LocaleAdminCoursesRoute,
+  LocaleAdminModerationRoute: LocaleAdminModerationRoute,
   LocaleAdminUsersRoute: LocaleAdminUsersRoute,
 }
 
@@ -695,12 +737,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
