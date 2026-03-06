@@ -15,6 +15,7 @@ import { Route as LocaleIndexRouteImport } from './routes/$locale.index'
 import { Route as LoginTwitterRouteImport } from './routes/login.twitter'
 import { Route as LoginGoogleRouteImport } from './routes/login.google'
 import { Route as LoginFacebookRouteImport } from './routes/login.facebook'
+import { Route as LocaleDashboardRouteImport } from './routes/$locale.dashboard'
 import { Route as LoginTwitterCallbackRouteImport } from './routes/login.twitter.callback'
 import { Route as LoginGoogleCallbackRouteImport } from './routes/login.google.callback'
 import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebook.callback'
@@ -49,6 +50,11 @@ const LoginFacebookRoute = LoginFacebookRouteImport.update({
   path: '/login/facebook',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocaleDashboardRoute = LocaleDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LoginTwitterCallbackRoute = LoginTwitterCallbackRouteImport.update({
   id: '/callback',
   path: '/callback',
@@ -68,6 +74,7 @@ const LoginFacebookCallbackRoute = LoginFacebookCallbackRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/$locale/dashboard': typeof LocaleDashboardRoute
   '/login/facebook': typeof LoginFacebookRouteWithChildren
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$locale/dashboard': typeof LocaleDashboardRoute
   '/login/facebook': typeof LoginFacebookRouteWithChildren
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
@@ -90,6 +98,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/$locale/dashboard': typeof LocaleDashboardRoute
   '/login/facebook': typeof LoginFacebookRouteWithChildren
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
@@ -103,6 +112,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$locale'
+    | '/$locale/dashboard'
     | '/login/facebook'
     | '/login/google'
     | '/login/twitter'
@@ -113,6 +123,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$locale/dashboard'
     | '/login/facebook'
     | '/login/google'
     | '/login/twitter'
@@ -124,6 +135,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/$locale'
+    | '/$locale/dashboard'
     | '/login/facebook'
     | '/login/google'
     | '/login/twitter'
@@ -185,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginFacebookRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$locale/dashboard': {
+      id: '/$locale/dashboard'
+      path: '/dashboard'
+      fullPath: '/$locale/dashboard'
+      preLoaderRoute: typeof LocaleDashboardRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/login/twitter/callback': {
       id: '/login/twitter/callback'
       path: '/callback'
@@ -210,10 +229,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface LocaleRouteChildren {
+  LocaleDashboardRoute: typeof LocaleDashboardRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
+  LocaleDashboardRoute: LocaleDashboardRoute,
   LocaleIndexRoute: LocaleIndexRoute,
 }
 
@@ -266,3 +287,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
