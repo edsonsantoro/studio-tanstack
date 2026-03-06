@@ -26,11 +26,13 @@ import { Route as LocaleEventsRouteImport } from './routes/$locale.events'
 import { Route as LocaleDataDeletionRouteImport } from './routes/$locale.data-deletion'
 import { Route as LocaleDashboardRouteImport } from './routes/$locale.dashboard'
 import { Route as LocaleCoursesRouteImport } from './routes/$locale.courses'
+import { Route as LocaleAdminRouteImport } from './routes/$locale.admin'
 import { Route as LoginTwitterCallbackRouteImport } from './routes/login.twitter.callback'
 import { Route as LoginGoogleCallbackRouteImport } from './routes/login.google.callback'
 import { Route as LoginFacebookCallbackRouteImport } from './routes/login.facebook.callback'
 import { Route as LocaleTestimoniesCreateRouteImport } from './routes/$locale.testimonies.create'
 import { Route as LocaleEventsCreateRouteImport } from './routes/$locale.events.create'
+import { Route as LocaleAdminUsersRouteImport } from './routes/$locale.admin.users'
 import { Route as LocaleTestimoniesIdIndexRouteImport } from './routes/$locale.testimonies.$id.index'
 import { Route as LocaleEventsIdIndexRouteImport } from './routes/$locale.events.$id.index'
 import { Route as LocaleTestimoniesIdEditRouteImport } from './routes/$locale.testimonies.$id.edit'
@@ -121,6 +123,11 @@ const LocaleCoursesRoute = LocaleCoursesRouteImport.update({
   path: '/courses',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocaleAdminRoute = LocaleAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LoginTwitterCallbackRoute = LoginTwitterCallbackRouteImport.update({
   id: '/callback',
   path: '/callback',
@@ -145,6 +152,11 @@ const LocaleEventsCreateRoute = LocaleEventsCreateRouteImport.update({
   id: '/create',
   path: '/create',
   getParentRoute: () => LocaleEventsRoute,
+} as any)
+const LocaleAdminUsersRoute = LocaleAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => LocaleAdminRoute,
 } as any)
 const LocaleTestimoniesIdIndexRoute =
   LocaleTestimoniesIdIndexRouteImport.update({
@@ -171,6 +183,7 @@ const LocaleEventsIdEditRoute = LocaleEventsIdEditRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/$locale/admin': typeof LocaleAdminRouteWithChildren
   '/$locale/courses': typeof LocaleCoursesRoute
   '/$locale/dashboard': typeof LocaleDashboardRoute
   '/$locale/data-deletion': typeof LocaleDataDeletionRoute
@@ -186,6 +199,7 @@ export interface FileRoutesByFullPath {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
@@ -198,6 +212,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$locale/admin': typeof LocaleAdminRouteWithChildren
   '/$locale/courses': typeof LocaleCoursesRoute
   '/$locale/dashboard': typeof LocaleDashboardRoute
   '/$locale/data-deletion': typeof LocaleDataDeletionRoute
@@ -213,6 +228,7 @@ export interface FileRoutesByTo {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale': typeof LocaleIndexRoute
+  '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
@@ -227,6 +243,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
+  '/$locale/admin': typeof LocaleAdminRouteWithChildren
   '/$locale/courses': typeof LocaleCoursesRoute
   '/$locale/dashboard': typeof LocaleDashboardRoute
   '/$locale/data-deletion': typeof LocaleDataDeletionRoute
@@ -242,6 +259,7 @@ export interface FileRoutesById {
   '/login/google': typeof LoginGoogleRouteWithChildren
   '/login/twitter': typeof LoginTwitterRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/admin/users': typeof LocaleAdminUsersRoute
   '/$locale/events/create': typeof LocaleEventsCreateRoute
   '/$locale/testimonies/create': typeof LocaleTestimoniesCreateRoute
   '/login/facebook/callback': typeof LoginFacebookCallbackRoute
@@ -257,6 +275,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$locale'
+    | '/$locale/admin'
     | '/$locale/courses'
     | '/$locale/dashboard'
     | '/$locale/data-deletion'
@@ -272,6 +291,7 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale/'
+    | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
     | '/login/facebook/callback'
@@ -284,6 +304,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$locale/admin'
     | '/$locale/courses'
     | '/$locale/dashboard'
     | '/$locale/data-deletion'
@@ -299,6 +320,7 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale'
+    | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
     | '/login/facebook/callback'
@@ -312,6 +334,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/$locale'
+    | '/$locale/admin'
     | '/$locale/courses'
     | '/$locale/dashboard'
     | '/$locale/data-deletion'
@@ -327,6 +350,7 @@ export interface FileRouteTypes {
     | '/login/google'
     | '/login/twitter'
     | '/$locale/'
+    | '/$locale/admin/users'
     | '/$locale/events/create'
     | '/$locale/testimonies/create'
     | '/login/facebook/callback'
@@ -467,6 +491,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleCoursesRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/admin': {
+      id: '/$locale/admin'
+      path: '/admin'
+      fullPath: '/$locale/admin'
+      preLoaderRoute: typeof LocaleAdminRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/login/twitter/callback': {
       id: '/login/twitter/callback'
       path: '/callback'
@@ -502,6 +533,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleEventsCreateRouteImport
       parentRoute: typeof LocaleEventsRoute
     }
+    '/$locale/admin/users': {
+      id: '/$locale/admin/users'
+      path: '/users'
+      fullPath: '/$locale/admin/users'
+      preLoaderRoute: typeof LocaleAdminUsersRouteImport
+      parentRoute: typeof LocaleAdminRoute
+    }
     '/$locale/testimonies/$id/': {
       id: '/$locale/testimonies/$id/'
       path: '/$id'
@@ -532,6 +570,18 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface LocaleAdminRouteChildren {
+  LocaleAdminUsersRoute: typeof LocaleAdminUsersRoute
+}
+
+const LocaleAdminRouteChildren: LocaleAdminRouteChildren = {
+  LocaleAdminUsersRoute: LocaleAdminUsersRoute,
+}
+
+const LocaleAdminRouteWithChildren = LocaleAdminRoute._addFileChildren(
+  LocaleAdminRouteChildren,
+)
 
 interface LocaleEventsRouteChildren {
   LocaleEventsCreateRoute: typeof LocaleEventsCreateRoute
@@ -565,6 +615,7 @@ const LocaleTestimoniesRouteWithChildren =
   LocaleTestimoniesRoute._addFileChildren(LocaleTestimoniesRouteChildren)
 
 interface LocaleRouteChildren {
+  LocaleAdminRoute: typeof LocaleAdminRouteWithChildren
   LocaleCoursesRoute: typeof LocaleCoursesRoute
   LocaleDashboardRoute: typeof LocaleDashboardRoute
   LocaleDataDeletionRoute: typeof LocaleDataDeletionRoute
@@ -580,6 +631,7 @@ interface LocaleRouteChildren {
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
+  LocaleAdminRoute: LocaleAdminRouteWithChildren,
   LocaleCoursesRoute: LocaleCoursesRoute,
   LocaleDashboardRoute: LocaleDashboardRoute,
   LocaleDataDeletionRoute: LocaleDataDeletionRoute,
@@ -643,3 +695,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
